@@ -4,4 +4,6 @@
     <string name="tab_Projects">Projects</string>
     <string name="tab_Operators">Operators</string>
     <string name="tab_Profile">Profile</string>
+    <string name="mock_text">Mock Text</string>
+    <string name="newimage">newImage</string>
 </resources>

@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.betterride.bradmin.R
 import com.betterride.bradmin.viewcontrollers.fragments.OperatorsFragment
+import com.betterride.bradmin.viewcontrollers.fragments.ProfileFragment
 import com.betterride.bradmin.viewcontrollers.fragments.ProjectsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                     return OperatorsFragment()
                 }
                 2 -> {
-                    return ProjectsFragment()
+                    return ProfileFragment()
                 }
             }
             return ProjectsFragment()
