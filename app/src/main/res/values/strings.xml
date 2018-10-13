@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">bradmin</string>
+    <string name="action_settings">Settings</string>
+    <string name="tab_Projects">Projects</string>
+    <string name="tab_Operators">Operators</string>
+    <string name="tab_Profile">Profile</string>
+</resources>
