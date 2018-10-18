@@ -9,6 +9,7 @@ class BRApi {
     companion object {
         val baseUrl = "http://demo4638714.mockable.io/"
         val projects = "$baseUrl/projects"
+        val junctions = "$baseUrl/junctions"
         val operators = ""
 
 
@@ -24,6 +25,26 @@ class BRApi {
                     object : ParsedRequestListener<ProjectsResponse> {
 
                         override fun onResponse(response: ProjectsResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
+
+        fun requestGetJunctions(
+            responseHandler: (JunctionsResponse?) -> Unit,
+            errorHandler: (ANError?) -> Unit
+        ){
+            AndroidNetworking.get(BRApi.junctions)
+                .setPriority(Priority.LOW)
+                .setTag("BradminApp")
+                .build()
+                .getAsObject(JunctionsResponse::class.java,
+                    object : ParsedRequestListener<JunctionsResponse>{
+                        override fun onResponse(response: JunctionsResponse?) {
                             responseHandler(response)
                         }
 

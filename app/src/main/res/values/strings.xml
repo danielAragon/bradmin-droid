@@ -11,4 +11,5 @@
     <string name="project_date">Project date</string>
     <string name="error_proj_date">Enter a Project date</string>
     <string name="error_name_proj">Enter a Project name</string>
+    <string name="title_activity_project">Project</string>
 </resources>

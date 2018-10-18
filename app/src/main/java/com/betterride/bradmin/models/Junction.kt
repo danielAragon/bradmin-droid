@@ -2,15 +2,15 @@ package com.betterride.bradmin.models
 
 import android.os.Bundle
 
-data class Project(
+data class Junction(
+    val project: Project,
     val id: String,
-    val date: String,
-    val name: String) {
+    val name: String){
     companion object {
-        fun from(bundle: Bundle): Project {
-            return Project(
+        fun from(bundle: Bundle): Junction {
+            return Junction(
+                Project.from(bundle.getBundle("project")!!),
                 bundle.getString("id")!!,
-                bundle.getString("date")!!,
                 bundle.getString("name")!!
             )
         }
@@ -18,8 +18,8 @@ data class Project(
 
     fun toBundle(): Bundle {
         val bundle = Bundle()
+        bundle.putBundle("project", project.toBundle())
         bundle.putString("id", id)
-        bundle.putString("date", date)
         bundle.putString("name", name)
         return bundle
     }
