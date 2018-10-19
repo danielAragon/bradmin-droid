@@ -40,7 +40,8 @@ class ProjectsFragment : Fragment() {
         projectsRecyclerView.adapter = projectsAdapter
         projectsRecyclerView.layoutManager = projectsLayoutManager
 
-        BRApi.requestGetProjects({ response -> handleResponse(response)},
+        BRApi.requestGetProjects(
+            { response -> handleResponse(response)},
             { error -> handleError(error)})
 
         return view
