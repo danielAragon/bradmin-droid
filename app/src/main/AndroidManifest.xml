@@ -31,6 +31,24 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.betterride.bradmin.viewcontrollers.activities.MainActivity"/>
         </activity>
+        <activity
+                android:name=".viewcontrollers.activities.JunctionActivity"
+                android:label="@string/title_activity_junction"
+                android:parentActivityName=".viewcontrollers.activities.ProjectActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.betterride.bradmin.viewcontrollers.activities.ProjectActivity"/>
+        </activity>
+        <activity
+                android:name=".viewcontrollers.activities.NewProjectActivity"
+                android:label="@string/title_activity_new_project"
+                android:parentActivityName=".viewcontrollers.activities.MainActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.betterride.bradmin.viewcontrollers.activities.MainActivity"/>
+        </activity>
     </application>
 
 </manifest>

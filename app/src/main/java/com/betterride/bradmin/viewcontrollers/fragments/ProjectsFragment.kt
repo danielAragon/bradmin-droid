@@ -3,7 +3,6 @@ package com.betterride.bradmin.viewcontrollers.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -17,8 +16,6 @@ import com.betterride.bradmin.models.Project
 import com.betterride.bradmin.network.BRApi
 import com.betterride.bradmin.network.ProjectsResponse
 import com.betterride.bradmin.viewcontrollers.adapters.ProjectsAdapter
-import com.betterride.bradmin.viewcontrollers.dialog.ProjectDialogFragment
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_projects.view.*
 
 class ProjectsFragment : Fragment() {
@@ -60,5 +57,4 @@ class ProjectsFragment : Fragment() {
     private fun handleError(anError: ANError?){
         Log.d("BradminApp", anError!!.message)
     }
-
 }

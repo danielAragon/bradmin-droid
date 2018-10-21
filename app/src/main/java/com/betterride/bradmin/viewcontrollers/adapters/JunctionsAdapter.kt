@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Junction
+import kotlinx.android.synthetic.main.item_junction.view.*
 
 class JunctionsAdapter(var junctions: ArrayList<Junction>,
                        val context: Context) : RecyclerView.Adapter<JunctionsAdapter.ViewHolder>(){
@@ -24,10 +25,19 @@ class JunctionsAdapter(var junctions: ArrayList<Junction>,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val junction = junctions.get(position)
-
+        holder.updateFrom(junction)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val titleJuncTextView = view.titleJuncTextView
+        val firstAvenueTextView = view.firstAvenueTextView
+        val secondAvenueTextView = view.secondAvenueTextView
+
+        fun updateFrom(junction: Junction){
+            titleJuncTextView.text = junction.name
+            firstAvenueTextView.text = junction.avenueFirst
+            secondAvenueTextView.text = junction.avenueSecond
+        }
 
     }
 }

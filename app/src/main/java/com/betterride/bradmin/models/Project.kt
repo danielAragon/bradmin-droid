@@ -4,14 +4,14 @@ import android.os.Bundle
 
 data class Project(
     val id: String,
-    val date: String,
-    val name: String) {
+    val date: String? = "",
+    val name: String? = "") {
     companion object {
         fun from(bundle: Bundle): Project {
             return Project(
-                bundle.getString("id")!!,
-                bundle.getString("date")!!,
-                bundle.getString("name")!!
+                bundle.getString("id"),
+                bundle.getString("date"),
+                bundle.getString("name")
             )
         }
     }
