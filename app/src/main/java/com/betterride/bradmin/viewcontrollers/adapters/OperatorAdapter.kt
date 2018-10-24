@@ -10,7 +10,7 @@ import com.betterride.bradmin.models.Operator
 import com.betterride.bradmin.models.User
 import kotlinx.android.synthetic.main.item_operator.view.*
 
-class OperatorAdapters(var operators: ArrayList<Operator>,var users: ArrayList<User> ,val context: Context) :
+class OperatorAdapters(var operators: ArrayList<Operator> ,val context: Context) :
     RecyclerView.Adapter<OperatorAdapters.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_operator, parent, false))
@@ -23,8 +23,7 @@ class OperatorAdapters(var operators: ArrayList<Operator>,var users: ArrayList<U
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val operator = operators.get(position)
-        val user = users.get(position)
-        holder.updateFrom(operator, user)
+        holder.updateFrom(operator)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -32,10 +31,9 @@ class OperatorAdapters(var operators: ArrayList<Operator>,var users: ArrayList<U
         val userNameTextView = view.userNameTextView
         val editOperatorButton = view.editOperatorButton
         val operatorImageView = view.operatorImageView
-        fun updateFrom(operator: Operator,user: User) {
+        fun updateFrom(operator: Operator) {
             nameOperatorTextView.text = operator.name
             userNameTextView.text = operator.userName
-            operatorImageView.setImageUrl(user.photo)
             editOperatorButton.setOnClickListener { view ->
                 val context = view.context
 //                context.startActivity(

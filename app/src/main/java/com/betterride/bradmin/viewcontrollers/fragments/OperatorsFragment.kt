@@ -32,16 +32,14 @@ class OperatorsFragment : Fragment() {
         operatorsRecyclerView = view.operatorsRecyclerView
         operators = ArrayList()
         users = ArrayList()
-        operatorsAdapter = OperatorAdapters(operators,users,view.context)
+        operatorsAdapter = OperatorAdapters(operators,view.context)
         operatorsLayoutManager = GridLayoutManager(view.context,1) as RecyclerView.LayoutManager
         operatorsRecyclerView.adapter = operatorsAdapter
         operatorsRecyclerView.layoutManager = operatorsLayoutManager
         BRApi.requestOperators(
             { response -> handleResponse(response)},
             { error -> handleError(error)})
-        BRApi.requestUsers("c13d6597335a44eafcfe09df6430e4",
-            { response -> handleResponse1(response)},
-            { error -> handleError1(error)})
+
         return view
     }
     private fun handleResponse(response: OperatorsResponse?){
@@ -58,16 +56,7 @@ class OperatorsFragment : Fragment() {
     private fun handleError(anError: ANError?){
         Log.d("BradminApp", anError!!.message)
     }
-    private fun handleResponse1(response: UserResponse?){
-        users = response!!.users!!
-        Log.d("BradminApp", "Found ${users.size} projects")
-        operatorsAdapter.users = users
-        operatorsAdapter.notifyDataSetChanged()
-    }
 
-    private fun handleError1(anError: ANError?){
-        Log.d("BradminApp", anError!!.message)
-    }
 
 }
 
