@@ -1,6 +1,9 @@
 package com.betterride.bradmin.viewcontrollers.activities
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -19,8 +22,8 @@ import kotlinx.android.synthetic.main.activity_project.*
 import kotlinx.android.synthetic.main.content_project.*
 
 class ProjectActivity : AppCompatActivity() {
-
     var junctions = ArrayList<Junction>()
+    lateinit var proj: Project
     lateinit var junctionsRecyclerView: RecyclerView
     lateinit var junctionsAdapter: JunctionsAdapter
     lateinit var junctionsLayoutManager: RecyclerView.LayoutManager
@@ -32,14 +35,14 @@ class ProjectActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val intent = intent ?: return
-        val project = Project.from(intent.extras)
-        projectNameTextView.text = project.name
-        dateProjectTextView.text = project.date
+        proj = Project.from(intent.extras)
+        projectNameTextView.text = proj.name
+        dateProjectTextView.text = proj.date
 
-        /*
+
         junctionsRecyclerView = juncRecyclerView
-        junctionsAdapter = JunctionsAdapter(junctions, applicationContext)
-        junctionsLayoutManager = GridLayoutManager(applicationContext, 1)
+        junctionsAdapter = JunctionsAdapter(junctions, this)
+        junctionsLayoutManager = GridLayoutManager(this, 1)
         junctionsRecyclerView.adapter = junctionsAdapter
         junctionsRecyclerView.layoutManager = junctionsLayoutManager
 
@@ -47,8 +50,6 @@ class ProjectActivity : AppCompatActivity() {
             {response -> handleResponse(response)},
             {error -> handleError(error)}
         )
-        */
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -60,13 +61,32 @@ class ProjectActivity : AppCompatActivity() {
         val id = item?.itemId
         when(id){
             R.id.editAction -> {
-                Toast.makeText(applicationContext, "It was edited correctly", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(applicationContext, EditProjectActivity::class.java).
+                    putExtras(proj.toBundle()))
+                return true
             }
             R.id.deleteAction -> {
-                Toast.makeText(applicationContext, "It was deleted correctly", Toast.LENGTH_SHORT).show()
+                alertDialog()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun alertDialog(){
+        val dialogbuilder = AlertDialog.Builder(this)
+        dialogbuilder.setMessage("Delete project?")
+        dialogbuilder.setPositiveButton("DELETE",
+            { dialogInterface: DialogInterface, i: Int ->
+                startActivity(Intent(applicationContext, MainActivity::class.java))
+
+            })
+        dialogbuilder.setNegativeButton("CANCEL",
+            { dialogInterface: DialogInterface, i: Int ->
+
+            })
+        val alertDialog = dialogbuilder.create()
+        alertDialog.show()
+
     }
 
     private fun handleResponse(response: JunctionsResponse?){

@@ -16,4 +16,5 @@
     <string name="edit_item">edit</string>
     <string name="delete_item">delete</string>
     <string name="title_activity_new_project">NewProjectActivity</string>
+    <string name="title_activity_edit_project">EditProjectActivity</string>
 </resources>

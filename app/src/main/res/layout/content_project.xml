@@ -14,6 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mock_text"
+            android:textStyle="bold"
+            android:textSize="15sp"
             android:textColor="@color/colorPrimaryText"
             android:layout_margin="@dimen/default_margin"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -24,14 +26,27 @@
             android:layout_height="wrap_content"
             android:text="@string/mock_text"
             android:textColor="@color/colorPrimaryText"
-            android:layout_margin="@dimen/default_margin"
+            android:layout_marginTop="13dp"
+            android:layout_marginStart="@dimen/default_margin"
             app:layout_constraintTop_toBottomOf="@+id/projectNameTextView"/>
+
+    <TextView
+            android:id="@+id/junctionTitTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:textColor="@color/colorPrimaryText"
+            android:text="Junctions"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@id/dateProjectTextView"/>
 
     <android.support.v7.widget.RecyclerView
             android:id="@+id/juncRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="@id/dateProjectTextView"/>
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/junctionTitTextView"/>
 
 </android.support.constraint.ConstraintLayout>

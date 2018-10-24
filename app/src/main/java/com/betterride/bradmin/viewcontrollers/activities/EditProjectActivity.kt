@@ -1,49 +1,37 @@
 package com.betterride.bradmin.viewcontrollers.activities
 
-import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.design.widget.TextInputEditText
 import android.support.design.widget.TextInputLayout
-import android.support.v7.app.AppCompatActivity
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageButton
 import android.widget.Toast
 import com.betterride.bradmin.R
-import kotlinx.android.synthetic.main.activity_new_project.*
-import kotlinx.android.synthetic.main.content_new_project.*
-import java.util.*
+import com.betterride.bradmin.models.Project
 
-class NewProjectActivity : AppCompatActivity() {
-    var yearInput: Int =0
-    var monthInput: Int =0
-    var dayInput: Int =0
+import kotlinx.android.synthetic.main.activity_edit_project.*
+import kotlinx.android.synthetic.main.content_new_project.*
+
+class EditProjectActivity : AppCompatActivity() {
+    lateinit var proj: Project
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_project)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        setTitle("New project")
+        setTitle("Edit project")
 
-        //var dateProjEditText = TextInputEditText(applicationContext)
+        val intent = intent ?: return
+        proj = Project.from(intent.extras)
+        nameProjEditText.setText(proj.name)
+        dateProjEditText.setText(proj.date)
 
-        var calendar = Calendar.getInstance()
 
-        var year = calendar.get(Calendar.YEAR)
-        var month = calendar.get(Calendar.MONTH)
-        var day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        dateImageButton.setOnClickListener { view ->
-            var datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener {
-                    view, yearT, monthT, dayOfMonthT ->
-                yearInput = yearT
-                monthInput = monthT
-                dayInput = dayOfMonthT
-                dateProjEditText.setText("$dayInput/$monthInput/$yearInput")
-            }, year, month,day)
-            datePicker.show()
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -53,9 +41,15 @@ class NewProjectActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item?.itemId
+        val context = applicationContext
         when(id){
             R.id.saveAction -> {
                 validateInput()
+                return true
+            }
+            android.R.id.home -> {
+                startActivity(Intent(this,ProjectActivity::class.java)
+                    .putExtras(proj.toBundle()))
                 return true
             }
         }
@@ -72,8 +66,8 @@ class NewProjectActivity : AppCompatActivity() {
     }
 
     private fun validateEditText(editText: TextInputEditText,
-                         textInputLayout: TextInputLayout,
-                         errorString: String): Boolean{
+                                 textInputLayout: TextInputLayout,
+                                 errorString: String): Boolean{
         if(editText.text.toString().trim().isEmpty()){
             textInputLayout.error = errorString
             return false
