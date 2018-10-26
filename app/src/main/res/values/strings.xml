@@ -11,4 +11,16 @@
     <string name="project_date">Project date</string>
     <string name="error_proj_date">Enter a Project date</string>
     <string name="error_name_proj">Enter a Project name</string>
+    <string name="title_activity_project">Project</string>
+    <string name="title_activity_junction">JunctionActivity</string>
+    <string name="edit_item">edit</string>
+    <string name="delete_item">delete</string>
+    <string name="title_activity_new_project">NewProjectActivity</string>
+    <string name="title_activity_edit_project">EditProjectActivity</string>
+    <string name="title_activity_new_operator">Nuevo Operador</string>
+    <string name="title_activity_edit_operator">Editar Operador</string>
+    <string name="operator_name">operator name</string>
+    <string name="user_name">user name</string>
+    <string name="last_name">Last name</string>
+    <string name="email">email</string>
 </resources>

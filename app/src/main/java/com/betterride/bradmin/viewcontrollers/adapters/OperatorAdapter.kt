@@ -1,6 +1,7 @@
 package com.betterride.bradmin.viewcontrollers.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Operator
 import com.betterride.bradmin.models.User
+import com.betterride.bradmin.viewcontrollers.activities.EditOperatorActivity
 import kotlinx.android.synthetic.main.item_operator.view.*
 
 class OperatorAdapters(var operators: ArrayList<Operator> ,val context: Context) :
@@ -36,19 +38,12 @@ class OperatorAdapters(var operators: ArrayList<Operator> ,val context: Context)
             userNameTextView.text = operator.userName
             editOperatorButton.setOnClickListener { view ->
                 val context = view.context
-//                context.startActivity(
-//                        Intent(context, OperatorActivity::class.java)
-//                                .putExtras(operator.toBundle()))
+                context.startActivity(
+                        Intent(context, EditOperatorActivity::class.java)
+                                .putExtras(operator.toBundle()))
 
             }
-            /*           editOperatorButton.setOnClickListener { view ->
-                           val context = view.context
-                           context.startActivity(
-                                   Intent(context, OperatorActivity::class.java)
-                                           .putExtras(operator.toBundle()))
 
-                       }
-                       */
         }
     }
 }

@@ -1,12 +1,14 @@
 package com.betterride.bradmin.viewcontrollers.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Project
+import com.betterride.bradmin.viewcontrollers.activities.ProjectActivity
 import kotlinx.android.synthetic.main.item_project.view.*
 
 class ProjectsAdapter(var projects: ArrayList<Project>,
@@ -31,12 +33,16 @@ class ProjectsAdapter(var projects: ArrayList<Project>,
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val titleProjectsTextView = view.titleProjectTextView
         val dayProjectTextView = view.dateProjectTextView
-        //val projectLayout = view.projectLayout
+        val projectLayout = view.item_project
 
         fun updateFrom(project: Project){
             titleProjectsTextView.text = project.name
             dayProjectTextView.text = project.date
-
+            projectLayout.setOnClickListener { view ->
+                val context = view.context
+                context.startActivity(Intent(context, ProjectActivity::class.java)
+                    .putExtras(project.toBundle()))
+            }
         }
     }
 }

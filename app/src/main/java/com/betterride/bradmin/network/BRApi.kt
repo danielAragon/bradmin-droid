@@ -11,6 +11,7 @@ class BRApi {
         val projects = "$baseUrl/projects"
         val operators = "http://demo5617161.mockable.io//operators"
         val users = "https://uifaces.co/api"
+        val junctions = "$baseUrl/junctions"
 
 
         fun requestGetProjects(
@@ -33,8 +34,11 @@ class BRApi {
                         }
                     })
         }
-        fun requestOperators(responseHandler: (OperatorsResponse?) -> Unit,
-                             errorHandler: (ANError?) -> Unit) {
+
+        fun requestOperators(
+            responseHandler: (OperatorsResponse?) -> Unit,
+            errorHandler: (ANError?) -> Unit
+        ) {
             AndroidNetworking.get(BRApi.operators)
                 .setPriority(Priority.LOW)
                 .setTag("BradminApp")
@@ -50,10 +54,12 @@ class BRApi {
                 })
         }
 
-        fun requestUsers(key: String, responseHandler: (UserResponse?) -> Unit,
-                             errorHandler: (ANError?) -> Unit) {
+        fun requestUsers(
+            key: String, responseHandler: (UserResponse?) -> Unit,
+            errorHandler: (ANError?) -> Unit
+        ) {
             AndroidNetworking.get(BRApi.users)
-                .addQueryParameter("X-API-KEY",key)
+                .addQueryParameter("X-API-KEY", key)
                 .setPriority(Priority.LOW)
                 .setTag("BradminApp")
                 .build()
@@ -67,5 +73,25 @@ class BRApi {
                     }
                 })
         }
+
+            fun requestGetJunctions(
+                responseHandler: (JunctionsResponse?) -> Unit,
+                errorHandler: (ANError?) -> Unit
+            ) {
+                AndroidNetworking.get(BRApi.junctions)
+                    .setPriority(Priority.LOW)
+                    .setTag("BradminApp")
+                    .build()
+                    .getAsObject(JunctionsResponse::class.java,
+                        object : ParsedRequestListener<JunctionsResponse> {
+                            override fun onResponse(response: JunctionsResponse?) {
+                                responseHandler(response)
+                            }
+
+                            override fun onError(anError: ANError?) {
+                                errorHandler(anError)
+                            }
+                        })
+            }
+        }
     }
-}
