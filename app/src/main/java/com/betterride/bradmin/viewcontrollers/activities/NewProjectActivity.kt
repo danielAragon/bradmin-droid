@@ -55,20 +55,24 @@ class NewProjectActivity : AppCompatActivity() {
         val id = item?.itemId
         when(id){
             R.id.saveAction -> {
-                validateInput()
-                return true
+                if(validateInput()){
+                    Toast.makeText(applicationContext, "It was saved correctly", Toast.LENGTH_SHORT).show()
+                    return true
+                }
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun validateInput(){
+    private fun validateInput(): Boolean {
+        var resp = true
         if(!validateEditText(nameProjEditText, nameProjTextInput, getString(R.string.error_name_proj))){
+            resp= false
         }
         if(!validateEditText(dateProjEditText, dateProjTextInput, getString(R.string.error_proj_date))){
-            return
+            resp=false
         }
-        Toast.makeText(applicationContext, "It was saved correctly", Toast.LENGTH_SHORT).show()
+        return resp
     }
 
     private fun validateEditText(editText: TextInputEditText,

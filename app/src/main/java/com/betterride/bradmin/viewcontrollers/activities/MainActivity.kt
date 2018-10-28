@@ -27,8 +27,7 @@ class MainActivity : AppCompatActivity() {
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
 
         mainFloActionButton.setOnClickListener { view ->
-            val context = applicationContext
-            startActivity(Intent(context, NewProjectActivity::class.java))
+            startActivity(Intent(this, NewProjectActivity::class.java))
         }
     }
 

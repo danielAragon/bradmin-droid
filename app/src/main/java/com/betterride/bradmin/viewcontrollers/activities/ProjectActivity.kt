@@ -10,23 +10,21 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.androidnetworking.error.ANError
 import com.betterride.bradmin.R
-import com.betterride.bradmin.models.Junction
 import com.betterride.bradmin.models.Project
+import com.betterride.bradmin.models.Session
 import com.betterride.bradmin.network.BRApi
-import com.betterride.bradmin.network.JunctionsResponse
-import com.betterride.bradmin.viewcontrollers.adapters.JunctionsAdapter
+import com.betterride.bradmin.viewcontrollers.adapters.SessionsAdapter
 import kotlinx.android.synthetic.main.activity_project.*
 import kotlinx.android.synthetic.main.content_project.*
 
 class ProjectActivity : AppCompatActivity() {
-    var junctions = ArrayList<Junction>()
+    var sessions = ArrayList<Session>()
     lateinit var proj: Project
-    lateinit var junctionsRecyclerView: RecyclerView
-    lateinit var junctionsAdapter: JunctionsAdapter
-    lateinit var junctionsLayoutManager: RecyclerView.LayoutManager
+    lateinit var sessionsRecyclerView: RecyclerView
+    lateinit var sessionsAdapter: SessionsAdapter
+    lateinit var sessionsLayoutManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,17 +37,17 @@ class ProjectActivity : AppCompatActivity() {
         projectNameTextView.text = proj.name
         dateProjectTextView.text = proj.date
 
+        sessionsRecyclerView = sessionRecyclerView
+        sessionsAdapter = SessionsAdapter(sessions, this)
+        sessionsLayoutManager = GridLayoutManager(this, 1)
+        sessionsRecyclerView.adapter = sessionsAdapter
+        sessionsRecyclerView.layoutManager = sessionsLayoutManager
 
-        junctionsRecyclerView = juncRecyclerView
-        junctionsAdapter = JunctionsAdapter(junctions, this)
-        junctionsLayoutManager = GridLayoutManager(this, 1)
-        junctionsRecyclerView.adapter = junctionsAdapter
-        junctionsRecyclerView.layoutManager = junctionsLayoutManager
-
-        BRApi.requestGetJunctions(
+        BRApi.requestGetSessions(
             {response -> handleResponse(response)},
             {error -> handleError(error)}
         )
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -89,16 +87,11 @@ class ProjectActivity : AppCompatActivity() {
 
     }
 
-    private fun handleResponse(response: JunctionsResponse?){
-        val status = response!!.status
-        if(status.equals("error",true)){
-            Log.d("CotchUp", "Error")
-            return
-        }
-        junctions = response.junctions!!
-        Log.d("BradminApp", "Found ${junctions.size} junctions")
-        junctionsAdapter.junctions = junctions
-        junctionsAdapter.notifyDataSetChanged()
+    private fun handleResponse(response: ArrayList<Session>?){
+        sessions = response!!
+        Log.d("BradminApp", "Found ${sessions.size} junctions")
+        sessionsAdapter.sessions = sessions
+        sessionsAdapter.notifyDataSetChanged()
     }
 
     private fun handleError(anError: ANError?){

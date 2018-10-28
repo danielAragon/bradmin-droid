@@ -29,9 +29,6 @@ class EditProjectActivity : AppCompatActivity() {
         proj = Project.from(intent.extras)
         nameProjEditText.setText(proj.name)
         dateProjEditText.setText(proj.date)
-
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -41,7 +38,6 @@ class EditProjectActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item?.itemId
-        val context = applicationContext
         when(id){
             R.id.saveAction -> {
                 validateInput()
