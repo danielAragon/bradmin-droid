@@ -7,7 +7,7 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.*
 import com.betterride.bradmin.R
 import com.betterride.bradmin.viewcontrollers.fragments.OperatorsFragment
-import com.betterride.bradmin.viewcontrollers.fragments.ProfileFragment
+import com.betterride.bradmin.viewcontrollers.fragments.ReportsFragment
 import com.betterride.bradmin.viewcontrollers.fragments.ProjectsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -36,16 +36,13 @@ class MainActivity : AppCompatActivity() {
         override fun getItem(position: Int): Fragment {
             when(position){
                 0 ->{
-                    mainFloActionButton.setImageResource(R.drawable.ic_add_black_24dp)
                     return ProjectsFragment()
                 }
                 1 ->{
-                    mainFloActionButton.setImageResource(R.drawable.ic_add_black_24dp)
                     return OperatorsFragment()
                 }
                 2 -> {
-                    mainFloActionButton.setImageResource(R.drawable.ic_edit_black_24dp)
-                    return ProfileFragment()
+                    return ReportsFragment()
 
                 }
             }

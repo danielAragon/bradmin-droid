@@ -1,12 +1,14 @@
 package com.betterride.bradmin.viewcontrollers.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Session
+import com.betterride.bradmin.viewcontrollers.activities.SessionActivity
 import kotlinx.android.synthetic.main.item_session.view.*
 
 class SessionsAdapter(var sessions: ArrayList<Session>,
@@ -31,16 +33,18 @@ class SessionsAdapter(var sessions: ArrayList<Session>,
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val firstAvenueTextView = view.firstAvenueTextView
         val secondAvenueTextView = view.secondAvenueTextView
+        val dateTextView = view.dateTexView
         val sessionLayout = view.item_session
 
         fun updateFrom(session: Session){
             firstAvenueTextView.text = session.avenue_first
             secondAvenueTextView.text = session.avenue_second
-            /*sessionLayout.setOnClickListener { view->
+            dateTextView.text = session.date
+            sessionLayout.setOnClickListener { view->
                 val context = view.context
-                context.startActivity(Intent(context, JunctionActivity::class.java)
+                context.startActivity(Intent(context, SessionActivity::class.java)
                     .putExtras(session.toBundle()))
-            }*/
+            }
         }
 
     }

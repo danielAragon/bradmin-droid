@@ -50,6 +50,15 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.betterride.bradmin.viewcontrollers.activities.ProjectActivity"/>
         </activity>
+        <activity
+                android:name=".viewcontrollers.activities.SessionActivity"
+                android:label="@string/title_activity_session"
+                android:parentActivityName=".viewcontrollers.activities.ProjectActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.betterride.bradmin.viewcontrollers.activities.ProjectActivity"/>
+        </activity>
     </application>
 
 </manifest>

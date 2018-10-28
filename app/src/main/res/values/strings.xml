@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">bradmin</string>
+    <string name="app_name">Better Ride</string>
     <string name="tab_Projects">Projects</string>
     <string name="tab_Operators">Operators</string>
-    <string name="tab_Profile">Profile</string>
+    <string name="tab_Reports">Reports</string>
     <string name="mock_text">Mock Text</string>
     <string name="newimage">newImage</string>
     <string name="save_name">SAVE</string>
@@ -21,4 +21,10 @@
     <string name="avenue_2">Avenue 2</string>
     <string name="error_avenue_name">Enter an Avenue name</string>
     <string name="title_sessions">Sessions</string>
+    <string name="title_activity_session">Session</string>
+    <string name="end_time">End time</string>
+    <string name="start_time">Start time</string>
+    <string name="date">Date</string>
+    <string name="first_avenue">First avenue</string>
+    <string name="second_avenue">Second avenue</string>
 </resources>
