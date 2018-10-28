@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.*
+import android.view.Menu
+import android.view.MenuItem
 import com.betterride.bradmin.R
 import com.betterride.bradmin.viewcontrollers.fragments.OperatorsFragment
 import com.betterride.bradmin.viewcontrollers.fragments.ReportsFragment
@@ -54,4 +56,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_profile, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val id = item?.itemId
+        when(id){
+            R.id.profileAction -> {
+                startActivity(Intent(applicationContext, ProfileActivity::class.java))
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }
