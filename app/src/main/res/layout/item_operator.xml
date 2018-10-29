@@ -29,16 +29,17 @@
             app:layout_constraintStart_toEndOf="@id/operatorImageView"/>
 
     <TextView
-            android:id="@+id/userNameTextView"
+            android:id="@+id/lastnameOperatorTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="15dp"
             android:text="@string/mock_text"
-            android:textColor="@color/colorSecondaryText"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/operatorImageView"/>
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_marginTop="17dp"
+            android:layout_marginStart="@dimen/default_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nameOperatorTextView"/>
 
 
 </android.support.constraint.ConstraintLayout>
