@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.*
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.betterride.bradmin.R
 import com.betterride.bradmin.viewcontrollers.fragments.OperatorsFragment
 import com.betterride.bradmin.viewcontrollers.fragments.ReportsFragment
@@ -45,7 +46,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 2 -> {
                     return ReportsFragment()
-
                 }
             }
             return ProjectsFragment()
