@@ -34,4 +34,5 @@
     <string name="first_avenue">First avenue</string>
     <string name="second_avenue">Second avenue</string>
     <string name="title_activity_profile">My profile</string>
+    <string name="title_activity_operator">Operator</string>
 </resources>

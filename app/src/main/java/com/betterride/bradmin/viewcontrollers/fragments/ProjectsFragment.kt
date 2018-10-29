@@ -1,6 +1,7 @@
 package com.betterride.bradmin.viewcontrollers.fragments
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -14,7 +15,10 @@ import com.androidnetworking.error.ANError
 import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Project
 import com.betterride.bradmin.network.BRApi
+import com.betterride.bradmin.viewcontrollers.activities.NewOperatorActivity
+import com.betterride.bradmin.viewcontrollers.activities.NewProjectActivity
 import com.betterride.bradmin.viewcontrollers.adapters.ProjectsAdapter
+import kotlinx.android.synthetic.main.fragment_operators.view.*
 import kotlinx.android.synthetic.main.fragment_projects.view.*
 
 class ProjectsFragment : Fragment() {
@@ -35,7 +39,9 @@ class ProjectsFragment : Fragment() {
         projectsLayoutManager = GridLayoutManager(view.context,1)
         projectsRecyclerView.adapter = projectsAdapter
         projectsRecyclerView.layoutManager = projectsLayoutManager
-
+        view.projectsFloActionButton.setOnClickListener { view ->
+            startActivity(Intent(view.context, NewProjectActivity::class.java))
+        }
         BRApi.requestGetProjects(
             { response -> handleResponse(response)},
             { error -> handleError(error)})

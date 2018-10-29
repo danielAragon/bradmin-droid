@@ -1,6 +1,7 @@
 package com.betterride.bradmin.viewcontrollers.fragments
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -15,6 +16,8 @@ import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Operator
 import com.betterride.bradmin.network.BRApi
 import com.betterride.bradmin.network.OperatorsResponse
+import com.betterride.bradmin.viewcontrollers.activities.NewOperatorActivity
+import com.betterride.bradmin.viewcontrollers.activities.NewProjectActivity
 import com.betterride.bradmin.viewcontrollers.adapters.OperatorAdapters
 import kotlinx.android.synthetic.main.fragment_operators.view.*
 
@@ -35,7 +38,9 @@ class OperatorsFragment : Fragment() {
         BRApi.requestOperators(
             { response -> handleResponse(response)},
             { error -> handleError(error)})
-
+        view.operatorsFloActionButton.setOnClickListener { view ->
+            startActivity(Intent(view.context, NewOperatorActivity::class.java))
+        }
         return view
     }
     private fun handleResponse(response: OperatorsResponse?){

@@ -67,9 +67,7 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.betterride.bradmin.viewcontrollers.activities.MainActivity"/>
         </activity>
-
         <activity
-
                 android:name=".viewcontrollers.activities.SessionActivity"
                 android:label="@string/title_activity_session"
                 android:parentActivityName=".viewcontrollers.activities.ProjectActivity"
@@ -81,6 +79,15 @@
         <activity
                 android:name=".viewcontrollers.activities.ProfileActivity"
                 android:label="@string/title_activity_profile"
+                android:parentActivityName=".viewcontrollers.activities.MainActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.betterride.bradmin.viewcontrollers.activities.MainActivity"/>
+        </activity>
+        <activity
+                android:name=".viewcontrollers.activities.OperatorActivity"
+                android:label="@string/title_activity_operator"
                 android:parentActivityName=".viewcontrollers.activities.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data

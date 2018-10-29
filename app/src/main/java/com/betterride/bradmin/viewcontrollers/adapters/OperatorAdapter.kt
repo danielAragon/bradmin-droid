@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Operator
 import com.betterride.bradmin.viewcontrollers.activities.EditOperatorActivity
+import com.betterride.bradmin.viewcontrollers.activities.OperatorActivity
 import kotlinx.android.synthetic.main.item_operator.view.*
 
 class OperatorAdapters(var operators: ArrayList<Operator> ,val context: Context) :
@@ -30,15 +31,16 @@ class OperatorAdapters(var operators: ArrayList<Operator> ,val context: Context)
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameOperatorTextView = view.nameOperatorTextView
         val userNameTextView = view.userNameTextView
-        val editOperatorButton = view.editOperatorButton
         val operatorImageView = view.operatorImageView
+        val itemOperator = view.item_operator
         fun updateFrom(operator: Operator) {
             nameOperatorTextView.text = operator.name
             userNameTextView.text = operator.userName
-            editOperatorButton.setOnClickListener { view ->
+            operatorImageView.setImageUrl(operator.photo)
+            itemOperator.setOnClickListener { view ->
                 val context = view.context
                 context.startActivity(
-                        Intent(context, EditOperatorActivity::class.java)
+                        Intent(context, OperatorActivity::class.java)
                                 .putExtras(operator.toBundle()))
 
             }

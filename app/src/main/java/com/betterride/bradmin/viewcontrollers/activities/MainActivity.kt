@@ -29,9 +29,7 @@ class MainActivity : AppCompatActivity() {
         container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
 
-        mainFloActionButton.setOnClickListener { view ->
-            startActivity(Intent(this, NewProjectActivity::class.java))
-        }
+
     }
 
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {

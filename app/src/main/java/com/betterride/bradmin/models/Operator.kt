@@ -5,7 +5,8 @@ import android.os.Bundle
 data class Operator(val name: String,
                     val lastName: String,
                     val email: String,
-                    val userName: String
+                    val userName: String,
+                    val photo: String
 )
 {
     companion object {
@@ -14,7 +15,9 @@ data class Operator(val name: String,
                 bundle.getString("name")!!,
                 bundle.getString("lastName")!!,
                 bundle.getString("email")!!,
-                bundle.getString("userName")!!
+                bundle.getString("userName")!!,
+                bundle.getString("photo")!!
+
             )
         }
     }
@@ -25,6 +28,7 @@ data class Operator(val name: String,
         bundle.putString("lastName", lastName)
         bundle.putString("email", email)
         bundle.putString("userName", userName)
+        bundle.putString("photo", photo)
         return bundle
     }
 }
