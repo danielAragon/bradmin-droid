@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Operator
-import com.betterride.bradmin.models.User
 import com.betterride.bradmin.viewcontrollers.activities.EditOperatorActivity
 import kotlinx.android.synthetic.main.item_operator.view.*
 

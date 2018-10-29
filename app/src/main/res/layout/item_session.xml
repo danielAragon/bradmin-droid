@@ -2,11 +2,11 @@
 <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/item_junction"
+        android:id="@+id/item_session"
         android:layout_width="match_parent"
         android:layout_height="88dp">
     <ImageView
-            android:id="@+id/junctionImageView"
+            android:id="@+id/sessionImageView"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/junction"
@@ -16,17 +16,30 @@
             android:contentDescription="@string/newimage"/>
 
     <TextView
-            android:id="@+id/titleJuncTextView"
+            android:id="@+id/titleSessTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mock_text"
+            android:text="Session"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textColor="@color/colorPrimaryText"
             android:layout_marginTop="12dp"
             android:layout_marginStart="@dimen/default_margin"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/junctionImageView"/>
+            app:layout_constraintStart_toEndOf="@id/sessionImageView"/>
+
+    <TextView
+            android:id="@+id/dateTexView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mock_text"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="6dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/titleSessTextView"/>
 
     <TextView
             android:id="@+id/firstAvenueTextView"
@@ -38,8 +51,8 @@
             android:text="@string/mock_text"
             android:textColor="@color/colorSecondaryText"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@id/titleJuncTextView"
-            app:layout_constraintStart_toEndOf="@id/junctionImageView"/>
+            app:layout_constraintTop_toBottomOf="@id/titleSessTextView"
+            app:layout_constraintStart_toEndOf="@id/sessionImageView"/>
 
     <TextView
             android:id="@+id/secondAvenueTextView"
@@ -52,7 +65,7 @@
             android:textColor="@color/colorSecondaryText"
             android:textSize="12sp"
             app:layout_constraintTop_toBottomOf="@id/firstAvenueTextView"
-            app:layout_constraintStart_toEndOf="@id/junctionImageView"/>
+            app:layout_constraintStart_toEndOf="@id/sessionImageView"/>
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -61,5 +74,4 @@
             android:layout_marginTop="15dp"
             android:background="@color/colorPrimaryText"
             app:layout_constraintTop_toBottomOf="@id/secondAvenueTextView"/>
-
 </android.support.constraint.ConstraintLayout>

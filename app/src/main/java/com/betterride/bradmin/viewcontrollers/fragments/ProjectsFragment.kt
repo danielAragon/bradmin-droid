@@ -14,7 +14,6 @@ import com.androidnetworking.error.ANError
 import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Project
 import com.betterride.bradmin.network.BRApi
-import com.betterride.bradmin.network.ProjectsResponse
 import com.betterride.bradmin.viewcontrollers.adapters.ProjectsAdapter
 import kotlinx.android.synthetic.main.fragment_projects.view.*
 
@@ -33,7 +32,7 @@ class ProjectsFragment : Fragment() {
 
         projectsRecyclerView = view.projectsRecyclerView
         projectsAdapter = ProjectsAdapter(projects, view.context)
-        projectsLayoutManager = GridLayoutManager(view.context,1) as RecyclerView.LayoutManager
+        projectsLayoutManager = GridLayoutManager(view.context,1)
         projectsRecyclerView.adapter = projectsAdapter
         projectsRecyclerView.layoutManager = projectsLayoutManager
 
@@ -44,12 +43,8 @@ class ProjectsFragment : Fragment() {
         return view
     }
 
-    private fun handleResponse(response: ProjectsResponse?){
-        val status = response!!.status
-        if (status.equals("error", true)) {
-            return
-        }
-        projects = response.projects!!
+    private fun handleResponse(response: ArrayList<Project>?){
+        projects = response!!
         Log.d("BradminApp", "Found ${projects.size} projects")
         projectsAdapter.projects = projects
         projectsAdapter.notifyDataSetChanged()

@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/activity_junction"
-        tools:context=".viewcontrollers.activities.JunctionActivity">
+        tools:showIn="@layout/activity_profile"
+        tools:context=".viewcontrollers.activities.ProfileActivity">
 
 </android.support.constraint.ConstraintLayout>

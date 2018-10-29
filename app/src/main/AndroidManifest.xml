@@ -26,19 +26,11 @@
                 android:name=".viewcontrollers.activities.ProjectActivity"
                 android:label="@string/title_activity_project"
                 android:parentActivityName=".viewcontrollers.activities.MainActivity"
-                android:theme="@style/AppTheme.NoActionBar">
+                android:theme="@style/AppTheme.NoActionBar"
+                android:windowSoftInputMode="stateHidden">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.betterride.bradmin.viewcontrollers.activities.MainActivity"/>
-        </activity>
-        <activity
-                android:name=".viewcontrollers.activities.JunctionActivity"
-                android:label="@string/title_activity_junction"
-                android:parentActivityName=".viewcontrollers.activities.ProjectActivity"
-                android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.betterride.bradmin.viewcontrollers.activities.ProjectActivity"/>
         </activity>
         <activity
                 android:name=".viewcontrollers.activities.NewProjectActivity"
@@ -71,6 +63,29 @@
                 android:name=".viewcontrollers.activities.EditOperatorActivity"
                 android:label="@string/title_activity_edit_operator"
                 android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.betterride.bradmin.viewcontrollers.activities.MainActivity"/>
+        </activity>
+
+        <activity
+
+                android:name=".viewcontrollers.activities.SessionActivity"
+                android:label="@string/title_activity_session"
+                android:parentActivityName=".viewcontrollers.activities.ProjectActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.betterride.bradmin.viewcontrollers.activities.ProjectActivity"/>
+        </activity>
+        <activity
+                android:name=".viewcontrollers.activities.ProfileActivity"
+                android:label="@string/title_activity_profile"
+                android:parentActivityName=".viewcontrollers.activities.MainActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.betterride.bradmin.viewcontrollers.activities.MainActivity"/>
         </activity>
     </application>
 

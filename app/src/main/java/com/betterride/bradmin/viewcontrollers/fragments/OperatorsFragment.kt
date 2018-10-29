@@ -13,17 +13,14 @@ import com.androidnetworking.error.ANError
 
 import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Operator
-import com.betterride.bradmin.models.User
 import com.betterride.bradmin.network.BRApi
 import com.betterride.bradmin.network.OperatorsResponse
-import com.betterride.bradmin.network.UserResponse
 import com.betterride.bradmin.viewcontrollers.adapters.OperatorAdapters
 import kotlinx.android.synthetic.main.fragment_operators.view.*
 
 class OperatorsFragment : Fragment() {
     lateinit var operatorsRecyclerView: RecyclerView
     lateinit var operators: ArrayList<Operator>
-    lateinit var users: ArrayList<User>
     lateinit var operatorsAdapter: OperatorAdapters
     lateinit var operatorsLayoutManager: RecyclerView.LayoutManager
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +28,6 @@ class OperatorsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_operators, container, false)
         operatorsRecyclerView = view.operatorsRecyclerView
         operators = ArrayList()
-        users = ArrayList()
         operatorsAdapter = OperatorAdapters(operators,view.context)
         operatorsLayoutManager = GridLayoutManager(view.context,1) as RecyclerView.LayoutManager
         operatorsRecyclerView.adapter = operatorsAdapter

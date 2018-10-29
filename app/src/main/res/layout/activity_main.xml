@@ -45,10 +45,10 @@
                     android:text="@string/tab_Operators" />
 
             <android.support.design.widget.TabItem
-                    android:id="@+id/tabProfile"
+                    android:id="@+id/tabReport"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tab_Profile" />
+                    android:text="@string/tab_Reports" />
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>

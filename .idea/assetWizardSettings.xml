@@ -18,7 +18,11 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
+<<<<<<< HEAD
                                       <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_edit_black_24dp.xml" />
+=======
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_account_circle_black_24dp.xml" />
+>>>>>>> S01/Feature/Project
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +32,17 @@
                         </option>
                         <option name="values">
                           <map>
+<<<<<<< HEAD
                             <entry key="outputName" value="ic_edit_black_24alterdp" />
                             <entry key="sourceFile" value="C:\Users\MAURICIO" />
+=======
+                            <entry key="color" value="ffffff" />
+                            <entry key="height" value="30" />
+                            <entry key="outputName" value="ic_account_circle_black_30dp" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="C:\Users\Ana" />
+                            <entry key="width" value="30" />
+>>>>>>> S01/Feature/Project
                           </map>
                         </option>
                       </PersistentState>

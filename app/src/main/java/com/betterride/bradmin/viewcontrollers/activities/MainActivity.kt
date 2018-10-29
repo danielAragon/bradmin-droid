@@ -5,9 +5,12 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.*
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import com.betterride.bradmin.R
 import com.betterride.bradmin.viewcontrollers.fragments.OperatorsFragment
-import com.betterride.bradmin.viewcontrollers.fragments.ProfileFragment
+import com.betterride.bradmin.viewcontrollers.fragments.ReportsFragment
 import com.betterride.bradmin.viewcontrollers.fragments.ProjectsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -27,8 +30,7 @@ class MainActivity : AppCompatActivity() {
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
 
         mainFloActionButton.setOnClickListener { view ->
-            val context = applicationContext
-            startActivity(Intent(context, NewProjectActivity::class.java))
+            startActivity(Intent(this, NewProjectActivity::class.java))
         }
     }
 
@@ -37,17 +39,13 @@ class MainActivity : AppCompatActivity() {
         override fun getItem(position: Int): Fragment {
             when(position){
                 0 ->{
-                    mainFloActionButton.setImageResource(R.drawable.ic_add_black_24dp)
                     return ProjectsFragment()
                 }
                 1 ->{
-                    mainFloActionButton.setImageResource(R.drawable.ic_add_black_24dp)
                     return OperatorsFragment()
                 }
                 2 -> {
-                    mainFloActionButton.setImageResource(R.drawable.ic_edit_black_24dp)
-                    return ProfileFragment()
-
+                    return ReportsFragment()
                 }
             }
             return ProjectsFragment()
@@ -58,4 +56,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_profile, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val id = item?.itemId
+        when(id){
+            R.id.profileAction -> {
+                startActivity(Intent(applicationContext, ProfileActivity::class.java))
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }
