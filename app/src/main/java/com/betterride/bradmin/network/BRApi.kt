@@ -60,7 +60,7 @@ class BRApi {
                 })
         }
         fun requestPostSupervisor(name: String,lastname: String,email: String,username: String,
-                                  password: String,organization_id: String,role: String,genre: String,
+                                  password: String,organization_id: String,role: String,genre: String, token: String,
             responseHandler: (ResponseBasic?) -> Unit,
             errorHandler: (ANError?) -> Unit
         ) {
@@ -80,7 +80,7 @@ class BRApi {
             }
 
             AndroidNetworking.post(BRApi.supervisor)
-                .addHeaders("token", "1234")
+                .addHeaders("token", token)
                 .addBodyParameter(data)
                 .setPriority(Priority.LOW)
                 .setTag("BradminApp")
@@ -95,7 +95,29 @@ class BRApi {
                     }
                 })
         }
+        fun requestPostSupervisorValidate(username: String,
+                                  password: String, token: String,
+                                  responseHandler: (ResponseSupervisor?) -> Unit,
+                                  errorHandler: (ANError?) -> Unit
+        ) {
 
+            AndroidNetworking.post(BRApi.supervisor)
+                .addHeaders("token", token)
+                .addPathParameter("username",username)
+                .addPathParameter("password",password)
+                .setPriority(Priority.LOW)
+                .setTag("BradminApp")
+                .build()
+                .getAsObject(ResponseSupervisor::class.java, object : ParsedRequestListener<ResponseSupervisor>{
+                    override fun onResponse(response: ResponseSupervisor?) {
+                        responseHandler(response)
+                    }
+
+                    override fun onError(anError: ANError?) {
+                        errorHandler(anError)
+                    }
+                })
+        }
         fun requestPostOrganization(token: String,
                                   responseHandler: (Boolean?) -> Unit,
                                   errorHandler: (ANError?) -> Unit

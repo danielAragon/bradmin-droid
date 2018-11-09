@@ -47,10 +47,12 @@ class RegisterActivity : AppCompatActivity() {
                         if(check) organizacion = response.data!!
                     },
                         { error ->  Log.d("BradminApp", error!!.message)
-                        check =false})
+                        //check =false
+                        })
                 }
                 if(check){
-                    BRApi.requestPostSupervisor(name,last_name,email,username,password,organizacion.id,"sup",genre,
+                    BRApi.requestPostSupervisor(name,last_name,email,username,password,organizacion.id,
+                        "sup",genre,token,
                         {response->handleResponse(response)},
                         {error->handleError(error)})}
                 }
