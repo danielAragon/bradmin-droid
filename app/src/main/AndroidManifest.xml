@@ -94,6 +94,11 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.betterride.bradmin.viewcontrollers.activities.MainActivity"/>
         </activity>
+        <activity
+                android:name=".viewcontrollers.activities.RegisterActivity"
+                android:label="@string/title_activity_register"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
