@@ -15,8 +15,9 @@ import org.json.JSONObject
 class BRApi {
     companion object {
         val baseUrl = "http://demo4638714.mockable.io/"
-        val baseUrl2 = "http://srv-desa.eastus2.cloudapp.azure.com/appbetterride/api/"
+        val baseUrl2 = "https://srv-desa.eastus2.cloudapp.azure.com/appbetterride/api"
         val supervisor = "$baseUrl2/v1/supervisors"
+        val user = "$baseUrl2/v1/login/user"
         val organization = "$baseUrl2/v1/organizations"
         val projects = "$baseUrl/projects"
         val sessions = "$baseUrl/sessions"
@@ -96,15 +97,13 @@ class BRApi {
                 })
         }
         fun requestPostSupervisorValidate(username: String,
-                                  password: String, token: String,
+                                  password: String,
                                   responseHandler: (ResponseSupervisor?) -> Unit,
                                   errorHandler: (ANError?) -> Unit
         ) {
 
-            AndroidNetworking.post(BRApi.supervisor)
-                .addHeaders("token", token)
-                .addPathParameter("username",username)
-                .addPathParameter("password",password)
+            AndroidNetworking.post("https://srv-desa.eastus2.cloudapp.azure.com/appbetterride/api/v1/login/user/$username/pass/$password")
+                .addHeaders("token", "1234")
                 .setPriority(Priority.LOW)
                 .setTag("BradminApp")
                 .build()

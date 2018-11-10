@@ -35,9 +35,9 @@ class OperatorsFragment : Fragment() {
         operatorsLayoutManager = GridLayoutManager(view.context,1) as RecyclerView.LayoutManager
         operatorsRecyclerView.adapter = operatorsAdapter
         operatorsRecyclerView.layoutManager = operatorsLayoutManager
-        BRApi.requestOperators(
+        /*BRApi.requestOperators(
             { response -> handleResponse(response)},
-            { error -> handleError(error)})
+            { error -> handleError(error)})*/
         view.operatorsFloActionButton.setOnClickListener { view ->
             startActivity(Intent(view.context, NewOperatorActivity::class.java))
         }

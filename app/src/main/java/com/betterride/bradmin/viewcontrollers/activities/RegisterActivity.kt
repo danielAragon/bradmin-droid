@@ -47,7 +47,7 @@ class RegisterActivity : AppCompatActivity() {
                         if(check) organizacion = response.data!!
                     },
                         { error ->  Log.d("BradminApp", error!!.message)
-                        //check =false
+                            //check =false
                         })
                 }
                 if(check){
@@ -55,8 +55,8 @@ class RegisterActivity : AppCompatActivity() {
                         "sup",genre,token,
                         {response->handleResponse(response)},
                         {error->handleError(error)})}
-                }
             }
+        }
 
     }
     private fun handleResponse(response:ResponseBasic?){

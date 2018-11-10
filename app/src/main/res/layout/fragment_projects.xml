@@ -5,6 +5,11 @@
              android:layout_height="match_parent"
              tools:context=".viewcontrollers.fragments.ProjectsFragment">
 
+    <TextView
+            android:id="@+id/texttest"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+    />
     <android.support.v7.widget.RecyclerView
             android:id="@+id/projectsRecyclerView"
             android:layout_width="match_parent"

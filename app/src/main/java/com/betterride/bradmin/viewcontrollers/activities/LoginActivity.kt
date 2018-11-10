@@ -1,5 +1,6 @@
 package com.betterride.bradmin.viewcontrollers.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
@@ -17,21 +18,30 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         setSupportActionBar(toolbar)
-
+        NoAccountbutton.setOnClickListener {view->
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
         butonIngresar.setOnClickListener { view ->
             var username = UsernameEditText.text.toString();
             var password = PasswordEditText.text.toString();
-            var token = TokenEditText.text.toString();
-            if (!username.equals("") && !password.equals("") && !token.equals("")) {
-                BRApi.requestPostSupervisorValidate(username,password,token,
+            //Log.d("BradminApp", error!!.message)
+            if (!username.equals("") && !password.equals("")) {
+                BRApi.requestPostSupervisorValidate(username,password,
                     { response -> check = response!!.message == "Ok"
-                        ActualSession.sup=response.data
-                        ActualSession.token=token},
+
+                        Log.d("BradminApp", response!!.message)
+                        if(check) {
+                            ActualSession.sup=response.data
+                            Log.d("BradminApp", "Se pudo ingresar")
+                            Log.d("BradminApp", ActualSession.sup?.name)
+                        startActivity(Intent(this, MainActivity::class.java))}else{
+                            Log.d("BradminApp", "No se pudo ingresar")
+                        }
+                    },
                     { error ->  Log.d("BradminApp", error!!.message) }
                 )
 
             }
         }
-        }
+    }
 }
-

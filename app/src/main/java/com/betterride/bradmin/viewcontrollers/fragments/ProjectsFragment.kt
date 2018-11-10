@@ -13,12 +13,14 @@ import android.view.ViewGroup
 import com.androidnetworking.error.ANError
 
 import com.betterride.bradmin.R
+import com.betterride.bradmin.models.ActualSession
 import com.betterride.bradmin.models.Project
 import com.betterride.bradmin.network.BRApi
 import com.betterride.bradmin.viewcontrollers.activities.NewOperatorActivity
 import com.betterride.bradmin.viewcontrollers.activities.NewProjectActivity
 import com.betterride.bradmin.viewcontrollers.adapters.ProjectsAdapter
 import kotlinx.android.synthetic.main.fragment_operators.view.*
+import kotlinx.android.synthetic.main.fragment_projects.*
 import kotlinx.android.synthetic.main.fragment_projects.view.*
 
 class ProjectsFragment : Fragment() {

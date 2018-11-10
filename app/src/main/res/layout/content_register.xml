@@ -32,7 +32,7 @@
                 android:layout_marginHorizontal="2dp"
                 android:layout_weight="1"
                 android:hint="Name"
-                />
+        />
         <EditText
                 android:id="@+id/LastNameText"
                 android:layout_width="fill_parent"
@@ -109,12 +109,12 @@
     <Button
             android:id="@+id/butonRegistrar"
             android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/TokenText"
-    android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TokenText"
+            android:layout_marginTop="10dp"
             android:textSize="18dp"
-    android:text="Registrar"/>
+            android:text="Registrar"/>
 
 
 </android.support.constraint.ConstraintLayout>

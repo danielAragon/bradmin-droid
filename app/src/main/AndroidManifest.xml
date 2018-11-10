@@ -16,11 +16,7 @@
                 android:name=".viewcontrollers.activities.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar"
                 android:windowSoftInputMode="stateHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
                 android:name=".viewcontrollers.activities.ProjectActivity"
@@ -95,14 +91,32 @@
                     android:value="com.betterride.bradmin.viewcontrollers.activities.MainActivity"/>
         </activity>
         <activity
-                android:name=".viewcontrollers.activities.RegisterActivity"
-                android:label="@string/title_activity_register"
+                android:name=".viewcontrollers.activities.WelcomeActivity"
+                android:label="@string/title_activity_welcome"
                 android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
                 android:name=".viewcontrollers.activities.LoginActivity"
                 android:label="@string/title_activity_login"
+                android:parentActivityName=".viewcontrollers.activities.WelcomeActivity"
                 android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.betterride.bradmin.viewcontrollers.activities.WelcomeActivity"/>
+        </activity>
+        <activity
+                android:name=".viewcontrollers.activities.RegisterActivity"
+                android:label="@string/title_activity_register"
+                android:parentActivityName=".viewcontrollers.activities.LoginActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.betterride.bradmin.viewcontrollers.activities.LoginActivity"/>
         </activity>
     </application>
 

@@ -10,47 +10,81 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_login"
         tools:context=".viewcontrollers.activities.LoginActivity">
-    <TextView
+
+    <ImageView
+            android:id="@+id/ImageLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:textSize="25dp"
-
-            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/br_logo_fg"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/LoginText"/>
-
-    <EditText
-            android:id="@+id/UsernameEditText"
+            app:layout_constraintStart_toStartOf="parent"
+    />
+    <LinearLayout
+            android:id="@+id/LayoutUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:layout_marginTop="40dp"
-            app:layout_constraintTop_toBottomOf="@+id/LoginText"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/ImageLogin">
+        <ImageView
+                android:id="@+id/UsernameImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/login_user"
+        />
+        <EditText
+                android:id="@+id/UsernameEditText"
+                android:layout_width="fill_parent"
+                android:layout_marginHorizontal="2dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Username"/>
 
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/LayoutPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/LayoutUsername">
+    <ImageView
+            android:id="@+id/PasswordImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/login_password"
+    />
     <EditText
             android:id="@+id/PasswordEditText"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="3dp"
+            android:layout_height="wrap_content"
+            android:hint="Password"/>
+    </LinearLayout>
+    <Button
+            android:id="@+id/NoAccountbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/UsernameEditText"/>
-    <EditText
-            android:id="@+id/TokenEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Token"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/PasswordEditText"/>
-
+            android:text="Sign up for BetterRide"
+            android:textSize="13dp"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/LayoutPassword"
+            app:layout_constraintBottom_toTopOf="@id/butonIngresar"/>
     <Button
             android:id="@+id/butonIngresar"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/TokenEditText"
-            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@id/NoAccountbutton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="30dp"
             android:textSize="18dp"
-            android:text="Ingresar" android:layout_width="wrap_content"/>
+            android:text="Log In" android:layout_width="wrap_content"/>
 
 </android.support.constraint.ConstraintLayout>
