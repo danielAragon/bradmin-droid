@@ -6,10 +6,13 @@ import android.support.design.widget.Snackbar
 import android.support.design.widget.TextInputEditText
 import android.support.design.widget.TextInputLayout
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.betterride.bradmin.R
+import com.betterride.bradmin.models.ActualSession
+import com.betterride.bradmin.network.BRApi
 
 import kotlinx.android.synthetic.main.activity_new_project.*
 import kotlinx.android.synthetic.main.content_new_project.*
@@ -58,7 +61,14 @@ class NewProjectActivity : AppCompatActivity() {
         when(id){
             R.id.saveAction -> {
                 if(validateInput()){
-                    Toast.makeText(applicationContext, "It was saved correctly", Toast.LENGTH_SHORT).show()
+                    BRApi.requestPostAddProject(nameProjEditText.text.toString(), ActualSession.sup!!.id,{
+                        response -> Log.d("BradminApp", response!!.message)
+                        Toast.makeText(applicationContext, "It was saved correctly", Toast.LENGTH_SHORT).show()
+                    },{
+                        error-> Log.d("BradminApp", error!!.message)
+                        Toast.makeText(applicationContext, "It was not saved correctly", Toast.LENGTH_SHORT).show()
+                    })
+
                     return true
                 }
             }

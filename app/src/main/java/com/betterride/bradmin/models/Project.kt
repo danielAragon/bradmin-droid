@@ -7,7 +7,8 @@ data class Project(
     val id: String = "",
     val name: String,
     val date: String,
-    val supervisor_id: String) {
+    val supervisor_id: String
+    ) {
     companion object {
         fun from(bundle: Bundle): Project {
             return Project(

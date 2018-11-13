@@ -13,8 +13,10 @@ import android.view.ViewGroup
 import com.androidnetworking.error.ANError
 
 import com.betterride.bradmin.R
+import com.betterride.bradmin.models.ActualSession
 import com.betterride.bradmin.models.Project
 import com.betterride.bradmin.network.BRApi
+import com.betterride.bradmin.network.ResponseProject
 import com.betterride.bradmin.viewcontrollers.activities.NewProjectActivity
 import com.betterride.bradmin.viewcontrollers.adapters.ProjectsAdapter
 import kotlinx.android.synthetic.main.fragment_projects.view.*
@@ -41,15 +43,16 @@ class ProjectsFragment : Fragment() {
             startActivity(Intent(view.context, NewProjectActivity::class.java))
         }
         BRApi.requestGetProjects(
+            ActualSession.sup!!.id,
             { response -> handleResponse(response)},
             { error -> handleError(error)})
 
         return view
     }
 
-    private fun handleResponse(response: ArrayList<Project>?){
-        projects = response!!
-        Log.d("BradminApp", "Found ${projects.size} projects")
+    private fun handleResponse(response: ResponseProject?){
+        //Log.d("BradminApp", "Found ${response!!.data!![0].name}")
+        projects = response!!.projects!!
         projectsAdapter.projects = projects
         projectsAdapter.notifyDataSetChanged()
     }

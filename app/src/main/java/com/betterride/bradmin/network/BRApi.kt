@@ -1,5 +1,6 @@
 package com.betterride.bradmin.network
 
+import android.util.Log
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
@@ -8,6 +9,7 @@ import com.betterride.bradmin.models.Project
 import com.betterride.bradmin.models.Session
 import org.json.JSONException
 import org.json.JSONObject
+import java.sql.Date
 
 class BRApi {
     companion object {
@@ -21,17 +23,21 @@ class BRApi {
         val validateuser = "$baseUrl2/v1/login/user/{username}/pass/{password}"
         val user2 = "$baseUrl2/user"
         val organization = "$baseUrl2/v1/organizations"
+        val allprojects =  "$baseUrl2/v1/projects/supervisors/{supervisor_id}"
+        val addprojects =  "$baseUrl2/v1/project"
 
-        fun requestGetProjects(
-            responseHandler: (ArrayList<Project>?) -> Unit,
+        fun requestGetProjects(supervisor: String,
+            responseHandler: (ResponseProject?) -> Unit,
             errorHandler: (ANError?) -> Unit
         ) {
-            AndroidNetworking.get(BRApi.projects)
+            AndroidNetworking.get(BRApi.allprojects)
+                .addPathParameter("supervisor_id",supervisor)
+                .addHeaders("token","1234")
                 .setPriority(Priority.LOW)
                 .setTag("BradminApp")
                 .build()
-                .getAsObjectList(Project::class.java, object : ParsedRequestListener<ArrayList<Project>> {
-                    override fun onResponse(response: ArrayList<Project>?) {
+                .getAsObject(ResponseProject::class.java, object : ParsedRequestListener<ResponseProject> {
+                    override fun onResponse(response: ResponseProject?) {
                         responseHandler(response)
                     }
 
@@ -140,20 +146,29 @@ class BRApi {
                     }
                 })
         }
-        fun requestPostOrganization(token: String,
-                                    responseHandler: (Boolean?) -> Unit,
-                                    errorHandler: (ANError?) -> Unit
+        fun requestPostAddProject(name: String, supervisor_id: String,
+                                  responseHandler: (ResponseBasic?) -> Unit,
+                                  errorHandler: (ANError?) -> Unit
         ) {
-            AndroidNetworking.post(BRApi.user2)
-                .addHeaders("token", token)
+            val data = JSONObject()
+            try {
+                data.put("name", name)
+                data.put("supervisor_id", supervisor_id)
+
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+
+            AndroidNetworking.post(BRApi.addprojects)
+                .addHeaders("token", "1234")
+                .addJSONObjectBody(data)
                 .setPriority(Priority.LOW)
                 .setTag("BradminApp")
                 .build()
-                .getAsObject(Boolean::class.java, object : ParsedRequestListener<Boolean>{
-                    override fun onResponse(response: Boolean?) {
+                .getAsObject(ResponseBasic::class.java, object : ParsedRequestListener<ResponseBasic>{
+                    override fun onResponse(response: ResponseBasic?) {
                         responseHandler(response)
                     }
-
                     override fun onError(anError: ANError?) {
                         errorHandler(anError)
                     }
