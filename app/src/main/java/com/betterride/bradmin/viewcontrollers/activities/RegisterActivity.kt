@@ -30,48 +30,38 @@ class RegisterActivity : AppCompatActivity() {
             var username = UsernameText.text.toString()
             var password = PasswordText.text.toString()
             var genero = ""
+
             var token: String = TokenText.text.toString()
+            Log.d("BradminApp", name + last_name+email+username+password+genero+token)
             if (RButtonMale.isChecked()){
                 genero = "Male"
             }
             else genero = "Female"
+            Log.d("BradminApp", name + last_name+email+username+password+genero+token)
 
             if (!name.equals("") && !last_name.equals("") && !email.equals("")
                 && !username.equals("") && !password.equals("") && !genero.equals("") && !token.equals("")
-            ) {
-                BRApi.requestPostOrganization(token,
-                    { response ->
-                        check = response!!
-                        Log.d("BradminApp", check.toString())
-                    },
-                    { error -> Log.d("BradminApp", error!!.message) }
-                )
-                /*if(check){
-                    BRApi.requestPostOrganizationData(token, { response ->
-                        check = response!!.message == "Ok"
-                        if(check) organizacion = response.data!!
-                    },
-                        { error ->  Log.d("BradminApp", error!!.message)
-                            //check =false
-                        })
-                }*/
-                /*if(check){
+            ) {Log.d("BradminApp", name)
+
+                BRApi.requestPostOrganizationData(token, { response ->
+                    check = response!!.message == "Ok"
+                    if(check) organizacion = response.data!!
+                    Log.d("BradminApp", response!!.message)
+                },
+                    { error ->  Log.d("BradminApp", error!!.message)
+                        //check =false
+                    })
+                Log.d("BradminApp", check.toString()+"2")
+                if(check){
                     BRApi.requestPostSupervisor(name,last_name,email,username,password,organizacion.id,
                         "sup",genero,token,
-                        {response->handleResponse(response)},
-                        {error->handleError(error)})}
-            }*/
-
+                        {response->Log.d("BradminApp", "hola")},
+                        {error->Log.d("BradminApp", error!!.message)})}
+            } else{
+                Log.d("BradminApp", "Completa")
             }
         }
 
-    }
-    private fun handleResponse(response:ResponseBasic?){
-        Log.d("BradminApp", response!!.message)
-    }
-
-    private fun handleError(anError: ANError?){
-        Log.d("BradminApp", anError!!.message)
     }
 
 }

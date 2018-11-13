@@ -18,7 +18,7 @@ class BRApi {
 
         val baseUrl2 = "https://srv-desa.eastus2.cloudapp.azure.com/appbetterride/api"
         val supervisor = "$baseUrl2/v1/supervisors"
-        val user = "$baseUrl2/v1/login/user"
+        val validateuser = "$baseUrl2/v1/login/user/{username}/pass/{password}"
         val user2 = "$baseUrl2/user"
         val organization = "$baseUrl2/v1/organizations"
 
@@ -103,7 +103,7 @@ class BRApi {
 
             AndroidNetworking.post(BRApi.supervisor)
                 .addHeaders("token", token)
-                .addBodyParameter(data)
+                .addJSONObjectBody(data)
                 .setPriority(Priority.LOW)
                 .setTag("BradminApp")
                 .build()
@@ -123,7 +123,9 @@ class BRApi {
                                           errorHandler: (ANError?) -> Unit
         ) {
 
-            AndroidNetworking.post("https://srv-desa.eastus2.cloudapp.azure.com/appbetterride/api/v1/login/user/$username/pass/$password")
+            AndroidNetworking.post(BRApi.validateuser)
+                .addPathParameter("username",username)
+                .addPathParameter("password", password)
                 .addHeaders("token", "1234")
                 .setPriority(Priority.LOW)
                 .setTag("BradminApp")
@@ -161,7 +163,7 @@ class BRApi {
                                         responseHandler: (ResponseOrganization?) -> Unit,
                                         errorHandler: (ANError?) -> Unit
         ) {
-            AndroidNetworking.post(BRApi.organization)
+            AndroidNetworking.get(BRApi.organization)
                 .addHeaders("token", token)
                 .setPriority(Priority.LOW)
                 .setTag("BradminApp")
