@@ -1,5 +1,6 @@
 package com.betterride.bradmin.viewcontrollers.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.support.design.widget.Snackbar
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log
 import com.androidnetworking.error.ANError
 import com.betterride.bradmin.R
+import com.betterride.bradmin.models.ActualSession
 import com.betterride.bradmin.models.Organization
 import com.betterride.bradmin.models.Supervisor
 import com.betterride.bradmin.network.BRApi
@@ -41,22 +43,33 @@ class RegisterActivity : AppCompatActivity() {
 
             if (!name.equals("") && !last_name.equals("") && !email.equals("")
                 && !username.equals("") && !password.equals("") && !genero.equals("") && !token.equals("")
-            ) {Log.d("BradminApp", name)
+            ) {
+                Log.d("BradminApp", name)
 
                 BRApi.requestPostOrganizationData(token, { response ->
                     check = response!!.message == "Ok"
                     if(check) organizacion = response.data!!
+                    Log.d("BradminApp", check.toString()+"first")
                     Log.d("BradminApp", response!!.message)
-                },
-                    { error ->  Log.d("BradminApp", error!!.message)
-                        //check =false
+                    BRApi.requestPostSupervisor(name,last_name,email,username,password,organizacion.id,"sup",genero,token,
+                        { response->
+                            BRApi.requestPostSupervisorValidate(username,password,
+                                { response -> check = response!!.message == "Ok"
+
+                                    Log.d("BradminApp", response!!.message)
+                                    if(check) {
+                                        ActualSession.sup=response.data
+
+                                        startActivity(Intent(this, MainActivity::class.java))}else{
+                                    }
+                                },
+                                { error ->  Log.d("BradminApp", error!!.message) }
+                            )
+                        },
+                        { error->       Log.d("BradminApp", error!!.message)})
+                        }, { error ->  Log.d("BradminApp", error!!.message)
+
                     })
-                Log.d("BradminApp", check.toString()+"2")
-                if(check){
-                    BRApi.requestPostSupervisor(name,last_name,email,username,password,organizacion.id,
-                        "sup",genero,token,
-                        {response->Log.d("BradminApp", "hola")},
-                        {error->Log.d("BradminApp", error!!.message)})}
             } else{
                 Log.d("BradminApp", "Completa")
             }
