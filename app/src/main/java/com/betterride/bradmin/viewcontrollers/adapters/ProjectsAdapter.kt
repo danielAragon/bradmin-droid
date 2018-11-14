@@ -37,7 +37,10 @@ class ProjectsAdapter(var projects: ArrayList<Project>, val context: Context
 
         fun updateFrom(project: Project){
             titleProjectsTextView.text = project.name
-            dayProjectTextView.text = project.date
+            var year = project.date.subSequence(0,4).toString()
+            var month = project.date.subSequence(5,7).toString()
+            var day = project.date.subSequence(8,10).toString()
+            dayProjectTextView.text = day + "/" + month +"/"+year
             projectLayout.setOnClickListener { view ->
                 val context = view.context
                 context.startActivity(

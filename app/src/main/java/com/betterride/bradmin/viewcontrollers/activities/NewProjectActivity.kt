@@ -1,6 +1,7 @@
 package com.betterride.bradmin.viewcontrollers.activities
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.TextInputEditText
@@ -61,9 +62,11 @@ class NewProjectActivity : AppCompatActivity() {
         when(id){
             R.id.saveAction -> {
                 if(validateInput()){
-                    BRApi.requestPostAddProject(nameProjEditText.text.toString(), ActualSession.sup!!.id,{
+                    var date = Date(yearInput,monthInput,dayInput)
+                    BRApi.requestPostAddProject(nameProjEditText.text.toString(),date, ActualSession.sup!!.id,{
                         response -> Log.d("BradminApp", response!!.message)
                         Toast.makeText(applicationContext, "It was saved correctly", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(applicationContext, MainActivity::class.java))
                     },{
                         error-> Log.d("BradminApp", error!!.message)
                         Toast.makeText(applicationContext, "It was not saved correctly", Toast.LENGTH_SHORT).show()

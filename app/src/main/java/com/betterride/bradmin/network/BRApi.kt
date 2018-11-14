@@ -9,7 +9,7 @@ import com.betterride.bradmin.models.Project
 import com.betterride.bradmin.models.Session
 import org.json.JSONException
 import org.json.JSONObject
-import java.sql.Date
+import java.util.*
 
 class BRApi {
     companion object {
@@ -25,6 +25,9 @@ class BRApi {
         val organization = "$baseUrl2/v1/organizations"
         val allprojects =  "$baseUrl2/v1/projects/supervisors/{supervisor_id}"
         val addprojects =  "$baseUrl2/v1/project"
+        val deleteproject = "$baseUrl2/v1/projects/{id}"
+        val sessionsall= "$baseUrl2/v1/sessions/projects/{project_id}"
+
 
         fun requestGetProjects(supervisor: String,
             responseHandler: (ResponseProject?) -> Unit,
@@ -146,13 +149,14 @@ class BRApi {
                     }
                 })
         }
-        fun requestPostAddProject(name: String, supervisor_id: String,
+        fun requestPostAddProject(name: String, date: Date,supervisor_id: String,
                                   responseHandler: (ResponseBasic?) -> Unit,
                                   errorHandler: (ANError?) -> Unit
         ) {
             val data = JSONObject()
             try {
                 data.put("name", name)
+                data.put("date",date.toString())
                 data.put("supervisor_id", supervisor_id)
 
             } catch (e: JSONException) {
@@ -185,6 +189,46 @@ class BRApi {
                 .build()
                 .getAsObject(ResponseOrganization::class.java, object : ParsedRequestListener<ResponseOrganization>{
                     override fun onResponse(response: ResponseOrganization?) {
+                        responseHandler(response)
+                    }
+
+                    override fun onError(anError: ANError?) {
+                        errorHandler(anError)
+                    }
+                })
+        }
+        fun requestDeleteOrganization(id: String,token: String,
+                                        responseHandler: (ResponseBasic?) -> Unit,
+                                        errorHandler: (ANError?) -> Unit
+        ) {
+            AndroidNetworking.delete(BRApi.deleteproject)
+                .addPathParameter("id",id)
+                .addHeaders("token", token)
+                .setPriority(Priority.LOW)
+                .setTag("BradminApp")
+                .build()
+                .getAsObject(ResponseBasic::class.java, object : ParsedRequestListener<ResponseBasic>{
+                    override fun onResponse(response: ResponseBasic?) {
+                        responseHandler(response)
+                    }
+
+                    override fun onError(anError: ANError?) {
+                        errorHandler(anError)
+                    }
+                })
+        }
+        fun requestGetSessions(id: String,token: String,
+                                      responseHandler: (ResponseSession?) -> Unit,
+                                      errorHandler: (ANError?) -> Unit
+        ) {
+            AndroidNetworking.get(BRApi.sessionsall)
+                .addPathParameter("project_id",id)
+                .addHeaders("token", token)
+                .setPriority(Priority.LOW)
+                .setTag("BradminApp")
+                .build()
+                .getAsObject(ResponseSession::class.java, object : ParsedRequestListener<ResponseSession>{
+                    override fun onResponse(response: ResponseSession?) {
                         responseHandler(response)
                     }
 

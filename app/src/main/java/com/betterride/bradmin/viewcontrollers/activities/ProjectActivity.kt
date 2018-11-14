@@ -16,6 +16,7 @@ import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Project
 import com.betterride.bradmin.models.Session
 import com.betterride.bradmin.network.BRApi
+import com.betterride.bradmin.network.ResponseSession
 import com.betterride.bradmin.viewcontrollers.adapters.SessionsAdapter
 
 import kotlinx.android.synthetic.main.activity_project.*
@@ -37,7 +38,10 @@ class ProjectActivity : AppCompatActivity() {
         val intent = intent ?: return
         proj = Project.from(intent.extras)
         projectNameTextView.text = proj.name
-        dateProjectTextView.text = proj.date
+        var year = proj.date.subSequence(0,4).toString()
+        var month = proj.date.subSequence(5,7).toString()
+        var day = proj.date.subSequence(8,10).toString()
+        dateProjectTextView.text = day + "/" + month +"/"+year
 
         sessionsRecyclerView = sessionRecyclerView
         sessionsAdapter = SessionsAdapter(sessions, this)
@@ -45,7 +49,7 @@ class ProjectActivity : AppCompatActivity() {
         sessionsRecyclerView.adapter = sessionsAdapter
         sessionsRecyclerView.layoutManager = sessionsLayoutManager
 
-        BRApi.requestGetSessions(
+        BRApi.requestGetSessions(proj.id,"1234",
             {response -> handleResponse(response)},
             {error -> handleError(error)}
         )
@@ -77,7 +81,10 @@ class ProjectActivity : AppCompatActivity() {
         dialogbuilder.setMessage("Delete project?")
         dialogbuilder.setPositiveButton("DELETE",
             { dialogInterface: DialogInterface, i: Int ->
-                startActivity(Intent(applicationContext, MainActivity::class.java))
+                BRApi.requestDeleteOrganization(proj.id,"1234",
+                    {responsa-> startActivity(Intent(applicationContext, MainActivity::class.java))},
+                    {error->  Log.d("BradminApp", error!!.message)})
+
 
             })
         dialogbuilder.setNegativeButton("CANCEL",
@@ -90,8 +97,8 @@ class ProjectActivity : AppCompatActivity() {
     }
 
 
-    private fun handleResponse(response: ArrayList<Session>?){
-        sessions = response!!
+    private fun handleResponse(response: ResponseSession?){
+        sessions = response!!.sessions!!
         Log.d("BradminApp", "Found ${sessions.size} junctions")
         sessionsAdapter.sessions = sessions
         sessionsAdapter.notifyDataSetChanged()

@@ -25,7 +25,10 @@ class SessionActivity : AppCompatActivity() {
 
         val intent = intent ?: return
         sess = Session.from(intent.extras)
-        dateSesTextView.text = sess.date
+        var year = sess.date.subSequence(0,4).toString()
+        var month = sess.date.subSequence(5,7).toString()
+        var day = sess.date.subSequence(8,10).toString()
+        dateSesTextView.text = day + "/" + month +"/"+year
         startTimeSesTextView.text = sess.started_at
         finTimeSesTextView.text = sess.finished_at
         firstAvenTextView.text = sess.avenue_first
@@ -44,7 +47,7 @@ class SessionActivity : AppCompatActivity() {
                 /*startActivity(
                     Intent(applicationContext, EditProjectActivity::class.java).
                         putExtras(proj.toBundle()))*/
-                return true
+                //return true
             }
             R.id.deleteAction -> {
                 alertDialog()

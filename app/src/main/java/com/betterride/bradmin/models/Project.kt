@@ -1,14 +1,12 @@
 package com.betterride.bradmin.models
 
-
 import android.os.Bundle
 
 data class Project(
     val id: String = "",
     val name: String,
     val date: String,
-    val supervisor_id: String
-    ) {
+    val supervisor_id: String) {
     companion object {
         fun from(bundle: Bundle): Project {
             return Project(

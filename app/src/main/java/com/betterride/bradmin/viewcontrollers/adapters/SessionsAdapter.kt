@@ -34,13 +34,17 @@ class SessionsAdapter(var sessions: ArrayList<Session>,
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val firstAvenueTextView = view.firstAvenueTextView
         val secondAvenueTextView = view.secondAvenueTextView
+
         val dateTextView = view.dateTexView
         val sessionLayout = view.item_session
 
         fun updateFrom(session: Session){
             firstAvenueTextView.text = session.avenue_first
             secondAvenueTextView.text = session.avenue_second
-            dateTextView.text = session.date
+            var year = session.date.subSequence(0,4).toString()
+            var month = session.date.subSequence(5,7).toString()
+            var day = session.date.subSequence(8,10).toString()
+            dateTextView.text = day + "/" + month +"/"+year
             sessionLayout.setOnClickListener { view->
                 val context = view.context
                 context.startActivity(
