@@ -32,8 +32,8 @@
                 android:id="@+id/UsernameImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/login_user"
+                android:layout_marginTop="11dp"
+                app:srcCompat="@drawable/ic_person_outline_black_30dp"
         />
         <EditText
                 android:id="@+id/UsernameEditText"
@@ -41,7 +41,7 @@
                 android:layout_marginHorizontal="2dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:hint="Username"/>
+                android:hint="Your username"/>
 
     </LinearLayout>
     <LinearLayout
@@ -54,8 +54,8 @@
                 android:id="@+id/PasswordImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/login_password"
+                android:layout_marginTop="11dp"
+                app:srcCompat="@drawable/ic_https_black_30dp"
         />
         <EditText
                 android:id="@+id/PasswordEditText"
@@ -64,28 +64,31 @@
                 android:layout_marginTop="3dp"
                 android:inputType="textPassword"
                 android:layout_height="wrap_content"
-                android:hint="Password"/>
+                android:hint="Your password"/>
     </LinearLayout>
+    <Button
+            android:id="@+id/butonIngresar"
+            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_marginBottom="30dp"
+            android:textSize="18dp"
+            android:text="Log In"
+            android:background="@color/colorPrimaryLight"
+            app:layout_constraintTop_toBottomOf="@id/LayoutPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/NoAccountbutton"/>
     <Button
             android:id="@+id/NoAccountbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign up for BetterRide"
+            android:text="Do not have a supervisor account?"
             android:textSize="13dp"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_marginBottom="10dp"
             android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@id/LayoutPassword"
-            app:layout_constraintBottom_toTopOf="@id/butonIngresar"/>
-    <Button
-            android:id="@+id/butonIngresar"
-            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/NoAccountbutton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="30dp"
-            android:textSize="18dp"
-            android:text="Log In" android:layout_width="wrap_content"/>
-
+            app:layout_constraintTop_toBottomOf="@id/butonIngresar"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 </android.support.constraint.ConstraintLayout>
