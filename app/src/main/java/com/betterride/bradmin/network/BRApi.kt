@@ -1,12 +1,9 @@
 package com.betterride.bradmin.network
 
-import android.util.Log
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
-import com.betterride.bradmin.models.Project
-import com.betterride.bradmin.models.Session
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
@@ -16,12 +13,10 @@ class BRApi {
         val baseUrl = "http://demo4638714.mockable.io/"
         val projects = "$baseUrl/projects"
         val operators = "http://demo5617161.mockable.io//operators"
-        val sessions = "$baseUrl/sessions"
 
         val baseUrl2 = "https://srv-desa.eastus2.cloudapp.azure.com/appbetterride/api"
         val supervisor = "$baseUrl2/v1/supervisors"
         val validateuser = "$baseUrl2/v1/login/user/{username}/pass/{password}"
-        val user2 = "$baseUrl2/user"
         val organization = "$baseUrl2/v1/organizations"
         val allprojects =  "$baseUrl2/v1/projects/supervisors/{supervisor_id}"
         val addprojects =  "$baseUrl2/v1/project"
@@ -69,27 +64,6 @@ class BRApi {
                 })
         }
 
-
-
-        fun requestGetSessions(
-            responseHandler: (ArrayList<Session>?) -> Unit,
-            errorHandler: (ANError?) -> Unit
-        ){
-            AndroidNetworking.get(BRApi.sessions)
-                .setPriority(Priority.LOW)
-                .setTag("BradminApp")
-                .build()
-                .getAsObjectList(Session::class.java, object : ParsedRequestListener<ArrayList<Session>> {
-                    override fun onResponse(response: ArrayList<Session>?) {
-                        responseHandler(response)
-                    }
-
-                    override fun onError(anError: ANError?) {
-                        errorHandler(anError)
-                    }
-
-                })
-        }
         fun requestPostSupervisor(name: String,lastname: String,email: String,username: String,
                                   password: String,organization_id: String,role: String,genre: String, token: String,
                                   responseHandler: (ResponseBasic?) -> Unit,

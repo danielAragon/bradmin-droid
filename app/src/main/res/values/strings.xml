@@ -4,7 +4,6 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_projects">Projects</string>
     <string name="title_operators">Operators</string>
-    <string name="title_analytics">Analytics</string>
     <string name="mock_text">Mock_text</string>
     <string name="newimage">Newimage</string>
     <string name="title_activity_project">Project</string>
@@ -33,9 +32,6 @@
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">Register</string>
-
-
-
 
 
     <string name="new_project">New project</string>
