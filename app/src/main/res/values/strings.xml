@@ -32,6 +32,8 @@
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">Register</string>
+    <string name="title_activity_analytics">Analytics</string>
+
 
 
     <string name="new_project">New project</string>

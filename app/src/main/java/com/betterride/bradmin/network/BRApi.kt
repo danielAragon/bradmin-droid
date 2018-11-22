@@ -45,16 +45,37 @@ class BRApi {
                 })
         }
 
+        fun requestGetOperatorsbySession(session: String,
+                               responseHandler: (ResponseOperator?) -> Unit,
+                               errorHandler: (ANError?) -> Unit
+        ) {
+            AndroidNetworking.get(BRApi.allprojects)
+                .addPathParameter("session_id",session)
+                .addHeaders("token","1234")
+                .setPriority(Priority.LOW)
+                .setTag("BradminApp")
+                .build()
+                .getAsObject(ResponseOperator::class.java, object : ParsedRequestListener<ResponseOperator> {
+                    override fun onResponse(response: ResponseOperator?) {
+                        responseHandler(response)
+                    }
+
+                    override fun onError(anError: ANError?) {
+                        errorHandler(anError)
+                    }
+                })
+        }
+
         fun requestOperators(
-            responseHandler: (OperatorsResponse?) -> Unit,
+            responseHandler: (ResponseOperator?) -> Unit,
             errorHandler: (ANError?) -> Unit
         ) {
             AndroidNetworking.get(BRApi.operators)
                 .setPriority(Priority.LOW)
                 .setTag("BradminApp")
                 .build()
-                .getAsObject(OperatorsResponse::class.java, object : ParsedRequestListener<OperatorsResponse> {
-                    override fun onResponse(response: OperatorsResponse?) {
+                .getAsObject(ResponseOperator::class.java, object : ParsedRequestListener<ResponseOperator> {
+                    override fun onResponse(response: ResponseOperator?) {
                         responseHandler(response)
                     }
 

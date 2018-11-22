@@ -15,7 +15,7 @@ import com.androidnetworking.error.ANError
 import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Operator
 import com.betterride.bradmin.network.BRApi
-import com.betterride.bradmin.network.OperatorsResponse
+import com.betterride.bradmin.network.ResponseOperator
 import com.betterride.bradmin.viewcontrollers.activities.NewOperatorActivity
 import com.betterride.bradmin.viewcontrollers.adapters.OperatorsAdapter
 import kotlinx.android.synthetic.main.fragment_operators.view.*
@@ -42,7 +42,7 @@ class OperatorsFragment : Fragment() {
         }
         return view
     }
-    private fun handleResponse(response: OperatorsResponse?){
+    private fun handleResponse(response: ResponseOperator?){
         val status = response!!.status
         if (status.equals("error", true)) {
             return

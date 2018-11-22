@@ -8,7 +8,8 @@ data class Session(
     val started_at: String,
     val finished_at: String,
     val avenue_first: String,
-    val avenue_second: String) {
+    val avenue_second: String,
+    val status: String) {
     companion object {
         fun from(bundle: Bundle): Session{
             return Session(
@@ -17,7 +18,8 @@ data class Session(
                 bundle.getString("started_at")!!,
                 bundle.getString("finished_at")!!,
                 bundle.getString("avenue_first")!!,
-                bundle.getString("avenue_second")!!
+                bundle.getString("avenue_second")!!,
+                bundle.getString("status")!!
             )
         }
     }
@@ -30,6 +32,7 @@ data class Session(
         bundle.putString("finished_at",finished_at)
         bundle.putString("avenue_first",avenue_first)
         bundle.putString("avenue_second",avenue_second)
+        bundle.putString("status", status)
         return bundle
     }
 }
