@@ -22,8 +22,13 @@ class OperatorActivity : AppCompatActivity() {
         pictureImageView.setDefaultImageResId(R.mipmap.ic_launcher)
         pictureImageView.setErrorImageResId(R.mipmap.ic_launcher)
         pictureImageView.setImageUrl(operator.photo)
-        nameText.text = operator.name
-        lastnameText.text = operator.last_name
+        operatorNameTextView.text = operator.name
+        operatorLastNameTextView.text = operator.last_name
+        operatorUsernameTextView.text = operator.username
+        operatorEmailTextView.text = operator.email
+        operatorNumberOfSessionHeldTextView.text = operator.num_session.toString()
+        operatorNumberOfSessionPendingTextView.text = operator.num_ses_pend.toString()
+        operatorDateOfLastSessionTextView.text = operator.last_session
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

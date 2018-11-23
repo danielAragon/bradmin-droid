@@ -12,60 +12,173 @@
     <com.androidnetworking.widget.ANImageView
             android:id="@+id/pictureImageView"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_margin="@dimen/default_margin"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="140dp"
+            android:layout_marginVertical="25dp"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"/>
+
     <TextView
-            android:id="@+id/nameLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
+            android:id="@+id/operatorNameTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:text="Name"
             android:textStyle="bold"
-            android:text="Name:"
-            app:layout_constraintTop_toBottomOf="@id/pictureImageView"/>
-    <TextView
-            android:id="@+id/lastnameLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryText"
             android:layout_margin="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="@id/nameLabel"
-            android:textStyle="bold"
-            android:text="Last name:" />
-    <TextView
-            android:id="@+id/usernameLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="@id/lastnameLabel"
-            android:textStyle="bold"
-            android:text="User:" />
-    <TextView
-            android:id="@+id/nameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintStart_toEndOf="@id/nameLabel"
             app:layout_constraintTop_toBottomOf="@id/pictureImageView"
-            android:textStyle="bold"
-            android:text="@string/mock_text"/>
+            app:layout_constraintStart_toStartOf="parent"/>
     <TextView
-            android:id="@+id/lastnameText"
-            android:layout_width="wrap_content"
+            android:id="@+id/operatorNameTextView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintStart_toEndOf="@id/lastnameLabel"
-            app:layout_constraintTop_toBottomOf="@id/nameText"
-            android:textStyle="bold"
-            android:text="@string/mock_text"/>
+            android:layout_marginTop="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/mock_text"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/operatorNameTitleView"
+            app:layout_constraintStart_toStartOf="parent"/>
     <TextView
-            android:id="@+id/usernameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintStart_toEndOf="@id/usernameLabel"
-            app:layout_constraintTop_toBottomOf="@id/lastnameText"
+            android:id="@+id/operatorLastNameTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:text="Last Name"
             android:textStyle="bold"
-            android:text="@string/mock_text"/>
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/operatorNameTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/operatorLastNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/mock_text"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/operatorLastNameTitleView"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/operatorUsernameTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:text="Username"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/operatorLastNameTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/operatorUsernameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/mock_text"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/operatorUsernameTitleView"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/operatorEmailTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:text="Email"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/operatorUsernameTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/operatorEmailTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/mock_text"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/operatorEmailTitleView"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/operatorNumberOfSessionHeldTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:text="Number of session held"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/operatorEmailTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/operatorNumberOfSessionHeldTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/mock_text"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/operatorNumberOfSessionHeldTitleView"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/operatorNumberOfSessionPendingTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:text="Number of session pending"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/operatorNumberOfSessionHeldTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/operatorNumberOfSessionPendingTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/mock_text"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/operatorNumberOfSessionPendingTitleView"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/operatorDateOfLastSessionTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:text="Date of the last session"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/operatorNumberOfSessionPendingTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/operatorDateOfLastSessionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/mock_text"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/operatorDateOfLastSessionTitleView"
+            app:layout_constraintStart_toStartOf="parent"/>
+
 
 </android.support.constraint.ConstraintLayout>
