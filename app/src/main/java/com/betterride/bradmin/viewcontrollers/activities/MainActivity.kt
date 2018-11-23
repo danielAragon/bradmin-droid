@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.betterride.bradmin.R
-import com.betterride.bradmin.viewcontrollers.fragments.AnalyticsFragment
 import com.betterride.bradmin.viewcontrollers.fragments.OperatorsFragment
 import com.betterride.bradmin.viewcontrollers.fragments.ProjectsFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -34,9 +33,6 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.navigation_operators -> {
                 return OperatorsFragment()
-            }
-            R.id.navigation_analytics -> {
-                return AnalyticsFragment()
             }
         }
         return ProjectsFragment()

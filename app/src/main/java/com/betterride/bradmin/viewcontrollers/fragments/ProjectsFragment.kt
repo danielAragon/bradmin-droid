@@ -13,7 +13,7 @@ import android.view.ViewGroup
 import com.androidnetworking.error.ANError
 
 import com.betterride.bradmin.R
-import com.betterride.bradmin.models.ActualSession
+import com.betterride.bradmin.UserSession
 import com.betterride.bradmin.models.Project
 import com.betterride.bradmin.network.BRApi
 import com.betterride.bradmin.network.ResponseProject
@@ -43,7 +43,7 @@ class ProjectsFragment : Fragment() {
             startActivity(Intent(view.context, NewProjectActivity::class.java))
         }
         BRApi.requestGetProjects(
-            ActualSession.sup!!.id,
+            UserSession.supervisor!!.id,
             { response -> handleResponse(response)},
             { error -> handleError(error)})
 

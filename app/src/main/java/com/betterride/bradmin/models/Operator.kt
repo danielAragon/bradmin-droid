@@ -3,9 +3,9 @@ package com.betterride.bradmin.models
 import android.os.Bundle
 
 data class Operator(val name: String,
-                    val lastName: String,
+                    val last_name: String,
                     val email: String,
-                    val userName: String,
+                    val gender: String,
                     val photo: String
 )
 {
@@ -13,9 +13,9 @@ data class Operator(val name: String,
         fun from(bundle: Bundle): Operator {
             return Operator(
                 bundle.getString("name")!!,
-                bundle.getString("lastName")!!,
+                bundle.getString("last_name")!!,
                 bundle.getString("email")!!,
-                bundle.getString("userName")!!,
+                bundle.getString("gender")!!,
                 bundle.getString("photo")!!
 
             )
@@ -25,9 +25,9 @@ data class Operator(val name: String,
     fun toBundle() : Bundle {
         val bundle = Bundle()
         bundle.putString("name", name)
-        bundle.putString("lastName", lastName)
+        bundle.putString("last_name", last_name)
         bundle.putString("email", email)
-        bundle.putString("userName", userName)
+        bundle.putString("gender", gender)
         bundle.putString("photo", photo)
         return bundle
     }

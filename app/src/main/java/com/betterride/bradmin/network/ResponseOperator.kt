@@ -2,9 +2,8 @@ package com.betterride.bradmin.network
 
 import com.betterride.bradmin.models.Operator
 
-class OperatorsResponse {
-    var status: String = ""
-    var code: String? = null
-    var message: String? = null
+class ResponseOperator {
     var operators: ArrayList<Operator>? = null
+    var code: String = ""
+    var message: String = ""
 }

@@ -11,9 +11,4 @@
             android:icon="@drawable/oper"
             android:title="@string/title_operators"/>
 
-    <item
-            android:id="@+id/navigation_analytics"
-            android:icon="@drawable/analytics"
-            android:title="@string/title_analytics"/>
-
 </menu>

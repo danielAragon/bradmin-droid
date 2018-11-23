@@ -2,17 +2,12 @@ package com.betterride.bradmin.viewcontrollers.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log
-import com.androidnetworking.error.ANError
 import com.betterride.bradmin.R
-import com.betterride.bradmin.models.ActualSession
+import com.betterride.bradmin.UserSession
 import com.betterride.bradmin.models.Organization
-import com.betterride.bradmin.models.Supervisor
 import com.betterride.bradmin.network.BRApi
-import com.betterride.bradmin.network.ResponseBasic
 
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.content_register.*
@@ -24,7 +19,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         setSupportActionBar(toolbar)
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         butonRegistrar.setOnClickListener { view ->
             var name = NameText.text.toString()
             var last_name = LastNameText.text.toString()
@@ -58,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
 
                                     Log.d("BradminApp", response!!.message)
                                     if(check) {
-                                        ActualSession.sup=response.data
+                                        UserSession.supervisor=response.data
 
                                         startActivity(Intent(this, MainActivity::class.java))}else{
                                     }

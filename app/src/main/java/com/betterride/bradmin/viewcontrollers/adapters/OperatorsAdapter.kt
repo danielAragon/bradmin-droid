@@ -1,20 +1,25 @@
 package com.betterride.bradmin.viewcontrollers.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.betterride.bradmin.R
 import com.betterride.bradmin.models.Operator
-import com.betterride.bradmin.viewcontrollers.activities.OperatorActivity
 import kotlinx.android.synthetic.main.item_operator.view.*
 
 class OperatorsAdapter(var operators: ArrayList<Operator>, val context: Context) :
     RecyclerView.Adapter<OperatorsAdapter.ViewHolder>(){
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val position = operators.get(position)
+        holder.updateFrom(position)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_operator, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(context)
+                .inflate(R.layout.item_operator, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -22,28 +27,13 @@ class OperatorsAdapter(var operators: ArrayList<Operator>, val context: Context)
 
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val operator = operators.get(position)
-        holder.updateFrom(operator)
-    }
-
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val nameOperatorTextView = view.nameOperatorTextView
-        val lastNameTextView = view.lastnameOperatorTextView
+        val fullNameOperatorTextView = view.fullNameOperatorTextView
         val operatorImageView = view.operatorImageView
-        val itemOperator = view.item_operator
+
         fun updateFrom(operator: Operator) {
-            nameOperatorTextView.text = operator.name
-            lastNameTextView.text = operator.lastName
+            fullNameOperatorTextView.text = "${operator.name} ${operator.last_name}"
             operatorImageView.setImageUrl(operator.photo)
-            itemOperator.setOnClickListener { view ->
-                val context = view.context
-                context.startActivity(
-                    Intent(context, OperatorActivity::class.java)
-                        .putExtras(operator.toBundle()))
-
-            }
-
         }
     }
 }
