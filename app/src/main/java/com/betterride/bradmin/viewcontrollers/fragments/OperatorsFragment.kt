@@ -22,16 +22,19 @@ import kotlinx.android.synthetic.main.fragment_operators.view.*
 
 class OperatorsFragment : Fragment() {
     lateinit var operatorsRecyclerView: RecyclerView
-    lateinit var operators: ArrayList<Operator>
+    var operators = ArrayList<Operator>()
     lateinit var operatorsAdapter: OperatorsAdapter
     lateinit var operatorsLayoutManager: RecyclerView.LayoutManager
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View? {
+
         val view = inflater.inflate(R.layout.fragment_operators, container, false)
+
         operatorsRecyclerView = view.operatorsRecyclerView
-        operators = ArrayList()
         operatorsAdapter = OperatorsAdapter(operators,view.context)
-        operatorsLayoutManager = GridLayoutManager(view.context,1) as RecyclerView.LayoutManager
+        operatorsLayoutManager = GridLayoutManager(view.context,1)
         operatorsRecyclerView.adapter = operatorsAdapter
         operatorsRecyclerView.layoutManager = operatorsLayoutManager
         BRApi.requestOperators(
@@ -43,11 +46,7 @@ class OperatorsFragment : Fragment() {
         return view
     }
     private fun handleResponse(response: ResponseOperator?){
-        val status = response!!.status
-        if (status.equals("error", true)) {
-            return
-        }
-        operators = response.operators!!
+        operators = response!!.operators!!
         Log.d("BradminApp", "Found ${operators.size} projects")
         operatorsAdapter.operators = operators
         operatorsAdapter.notifyDataSetChanged()

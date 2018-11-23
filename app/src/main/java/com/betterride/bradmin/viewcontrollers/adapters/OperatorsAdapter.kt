@@ -11,6 +11,10 @@ import kotlinx.android.synthetic.main.item_operator.view.*
 
 class OperatorsAdapter(var operators: ArrayList<Operator>, val context: Context) :
     RecyclerView.Adapter<OperatorsAdapter.ViewHolder>(){
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val position = operators.get(position)
+        holder.updateFrom(position)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
         return ViewHolder(
@@ -21,11 +25,6 @@ class OperatorsAdapter(var operators: ArrayList<Operator>, val context: Context)
     override fun getItemCount(): Int {
         return operators.size
 
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val operator = operators.get(position)
-        holder.updateFrom(operator)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
