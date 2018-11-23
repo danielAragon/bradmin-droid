@@ -1,7 +1,6 @@
 package com.betterride.bradmin.viewcontrollers.activities
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu
 import com.betterride.bradmin.R
@@ -24,8 +23,7 @@ class OperatorActivity : AppCompatActivity() {
         pictureImageView.setErrorImageResId(R.mipmap.ic_launcher)
         pictureImageView.setImageUrl(operator.photo)
         nameText.text = operator.name
-        lastnameText.text = operator.lastName
-        usernameText.text = operator.userName
+        lastnameText.text = operator.last_name
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

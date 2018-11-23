@@ -3,7 +3,6 @@ package com.betterride.bradmin.viewcontrollers.activities
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.TextInputEditText
 import android.support.design.widget.TextInputLayout
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.betterride.bradmin.R
-import com.betterride.bradmin.models.ActualSession
+import com.betterride.bradmin.UserSession
 import com.betterride.bradmin.network.BRApi
 
 import kotlinx.android.synthetic.main.activity_new_project.*
@@ -63,7 +62,7 @@ class NewProjectActivity : AppCompatActivity() {
             R.id.saveAction -> {
                 if(validateInput()){
                     var date = Date(yearInput,monthInput,dayInput)
-                    BRApi.requestPostAddProject(nameProjEditText.text.toString(),date, ActualSession.sup!!.id,{
+                    BRApi.requestPostAddProject(nameProjEditText.text.toString(),date, UserSession.supervisor!!.id,{
                         response -> Log.d("BradminApp", response!!.message)
                         Toast.makeText(applicationContext, "It was saved correctly", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(applicationContext, MainActivity::class.java))

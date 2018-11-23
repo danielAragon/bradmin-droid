@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log
 import com.betterride.bradmin.R
-import com.betterride.bradmin.models.ActualSession
+import com.betterride.bradmin.UserSession
 import com.betterride.bradmin.network.BRApi
 
 import kotlinx.android.synthetic.main.activity_login.*
@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
 
                         Log.d("BradminApp", response!!.message)
                         if(check) {
-                            ActualSession.sup=response.data
+                            UserSession.supervisor = response.data
                             startActivity(Intent(this, MainActivity::class.java))}else{
                         }
                     },

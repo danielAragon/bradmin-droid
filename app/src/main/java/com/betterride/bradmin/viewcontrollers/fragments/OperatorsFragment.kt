@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import com.androidnetworking.error.ANError
 
 import com.betterride.bradmin.R
+import com.betterride.bradmin.UserSession
 import com.betterride.bradmin.models.Operator
 import com.betterride.bradmin.network.BRApi
 import com.betterride.bradmin.network.ResponseOperator
@@ -21,8 +22,8 @@ import com.betterride.bradmin.viewcontrollers.adapters.OperatorsAdapter
 import kotlinx.android.synthetic.main.fragment_operators.view.*
 
 class OperatorsFragment : Fragment() {
-    lateinit var operatorsRecyclerView: RecyclerView
     var operators = ArrayList<Operator>()
+    lateinit var operatorsRecyclerView: RecyclerView
     lateinit var operatorsAdapter: OperatorsAdapter
     lateinit var operatorsLayoutManager: RecyclerView.LayoutManager
 
@@ -37,12 +38,16 @@ class OperatorsFragment : Fragment() {
         operatorsLayoutManager = GridLayoutManager(view.context,1)
         operatorsRecyclerView.adapter = operatorsAdapter
         operatorsRecyclerView.layoutManager = operatorsLayoutManager
-        BRApi.requestOperators(
-            { response -> handleResponse(response)},
-            { error -> handleError(error)})
+
         view.addOpeFloatingAction.setOnClickListener { view ->
             startActivity(Intent(view.context, NewOperatorActivity::class.java))
         }
+
+        BRApi.requestGetOperatorsbyOrganization(
+            UserSession.supervisor!!.organization_id,
+            { response -> handleResponse(response)},
+            { error -> handleError(error)})
+
         return view
     }
     private fun handleResponse(response: ResponseOperator?){

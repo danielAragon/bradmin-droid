@@ -28,13 +28,11 @@ class OperatorsAdapter(var operators: ArrayList<Operator>, val context: Context)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val nameOperatorTextView = view.nameOperatorTextView
-        val lastNameTextView = view.lastnameOperatorTextView
+        val fullNameOperatorTextView = view.fullNameOperatorTextView
         val operatorImageView = view.operatorImageView
 
         fun updateFrom(operator: Operator) {
-            nameOperatorTextView.text = operator.name
-            lastNameTextView.text = operator.lastName
+            fullNameOperatorTextView.text = "${operator.name} ${operator.last_name}"
             operatorImageView.setImageUrl(operator.photo)
         }
     }

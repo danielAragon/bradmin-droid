@@ -10,18 +10,16 @@ import java.util.*
 
 class BRApi {
     companion object {
-        val baseUrl = "http://demo4638714.mockable.io/"
-        val projects = "$baseUrl/projects"
-        val operators = "http://demo5617161.mockable.io//operators"
-
-        val baseUrl2 = "https://srv-desa.eastus2.cloudapp.azure.com/appbetterride/api"
-        val supervisor = "$baseUrl2/v1/supervisors"
-        val validateuser = "$baseUrl2/v1/login/user/{username}/pass/{password}"
-        val organization = "$baseUrl2/v1/organizations"
-        val allprojects =  "$baseUrl2/v1/projects/supervisors/{supervisor_id}"
-        val addprojects =  "$baseUrl2/v1/project"
-        val deleteproject = "$baseUrl2/v1/projects/{id}"
-        val sessionsall= "$baseUrl2/v1/sessions/projects/{project_id}"
+        val baseUrl = "https://srv-desa.eastus2.cloudapp.azure.com/appbetterride/api"
+        val supervisor = "$baseUrl/v1/supervisors"
+        val validateuser = "$baseUrl/v1/login/user/{username}/pass/{password}"
+        val organization = "$baseUrl/v1/organizations"
+        val allprojects =  "$baseUrl/v1/projects/supervisors/{supervisor_id}"
+        val addprojects =  "$baseUrl/v1/project"
+        val deleteproject = "$baseUrl/v1/projects/{id}"
+        val sessionsall= "$baseUrl/v1/sessions/projects/{project_id}"
+        val operatorsbySession = "$baseUrl/v1/userSession/sessions/{session_id}"
+        val operatorsbyOrganization = "$baseUrl/v1/operators/organizations/{organization_id}"
 
 
         fun requestGetProjects(supervisor: String,
@@ -45,12 +43,12 @@ class BRApi {
                 })
         }
 
-        fun requestGetOperatorsbySession(session: String,
+        fun requestGetOperatorsbySession(organization: String,
                                responseHandler: (ResponseOperator?) -> Unit,
                                errorHandler: (ANError?) -> Unit
         ) {
-            AndroidNetworking.get(BRApi.allprojects)
-                .addPathParameter("session_id",session)
+            AndroidNetworking.get(BRApi.operatorsbyOrganization)
+                .addPathParameter("organization_id",organization)
                 .addHeaders("token","1234")
                 .setPriority(Priority.LOW)
                 .setTag("BradminApp")
@@ -66,11 +64,13 @@ class BRApi {
                 })
         }
 
-        fun requestOperators(
-            responseHandler: (ResponseOperator?) -> Unit,
-            errorHandler: (ANError?) -> Unit
+        fun requestGetOperatorsbyOrganization(session: String,
+                                         responseHandler: (ResponseOperator?) -> Unit,
+                                         errorHandler: (ANError?) -> Unit
         ) {
-            AndroidNetworking.get(BRApi.operators)
+            AndroidNetworking.get(BRApi.operatorsbySession)
+                .addPathParameter("session_id",session)
+                .addHeaders("token","1234")
                 .setPriority(Priority.LOW)
                 .setTag("BradminApp")
                 .build()
